@@ -1,0 +1,819 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI in Medicine: Practical Tools, Evaluations & Teaching Guides — Ram Paragi</title>
+<meta name="description" content="A curated collection of practical AI resources for clinicians, researchers, faculty, residents, and institutional leaders.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   CONFIG — edit values here to update page content
+   ============================================================ */
+/* See CONFIG object in <script> below */
+
+/* ============================================================
+   DESIGN TOKENS
+   ============================================================ */
+:root {
+  --ink:        #0f1923;
+  --ink-mid:    #2e3d4f;
+  --ink-soft:   #5a6e82;
+  --rule:       #d4dde6;
+  --bg:         #f7f9fb;
+  --surface:    #ffffff;
+  --accent:     #1a4f82;
+  --accent-hover: #133a62;
+  --accent-light: #e8f0f9;
+  --accent-sec: #e9f2fb;
+  --ghost-border: #c2d4e8;
+  --radius:     10px;
+  --radius-lg:  16px;
+  --shadow-card: 0 2px 8px rgba(15,25,35,.07), 0 0 0 1px rgba(15,25,35,.05);
+  --shadow-hover: 0 8px 24px rgba(15,25,35,.12), 0 0 0 1px rgba(26,79,130,.15);
+  --font-serif: 'Libre Baskerville', Georgia, serif;
+  --font-sans:  'DM Sans', system-ui, sans-serif;
+  --transition: 0.18s ease;
+}
+
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.6;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+a:focus-visible, button:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+img { max-width: 100%; }
+
+/* ============================================================
+   LAYOUT
+   ============================================================ */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero {
+  background: var(--surface);
+  border-bottom: 1px solid var(--rule);
+  padding: 48px 0 36px;
+}
+.hero-inner {
+  display: block;
+}
+.hero-eyebrow {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+.hero-title {
+  font-family: var(--font-serif);
+  font-size: clamp(22px, 4vw, 32px);
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--ink);
+  margin-bottom: 14px;
+}
+.hero-subtitle {
+  font-size: 15px;
+  color: var(--ink-mid);
+  max-width: 580px;
+  line-height: 1.65;
+  margin-bottom: 20px;
+}
+.hero-byline {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.hero-byline .name {
+  font-family: var(--font-serif);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--ink);
+}
+.hero-byline .role {
+  font-size: 12.5px;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+.hero-byline .email {
+  font-size: 12.5px;
+  color: var(--accent);
+  margin-top: 2px;
+}
+
+/* QR placeholder */
+.qr-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+.qr-box {
+  width: 100px;
+  height: 100px;
+  border: 2px dashed var(--ghost-border);
+  border-radius: var(--radius);
+  background: var(--accent-sec);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  color: var(--accent);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 8px;
+}
+.qr-box svg { opacity: .45; }
+.qr-label {
+  font-size: 10px;
+  color: var(--ink-soft);
+  text-align: center;
+  max-width: 100px;
+}
+
+/* ============================================================
+   HOW TO USE
+   ============================================================ */
+.how-strip {
+  background: var(--accent-light);
+  border-bottom: 1px solid #c6d8ef;
+  padding: 14px 0;
+}
+.how-inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 32px;
+  align-items: center;
+}
+.how-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  white-space: nowrap;
+}
+.how-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+}
+.how-list li {
+  font-size: 13px;
+  color: var(--ink-mid);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.how-list li::before {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   RESOURCES MAIN
+   ============================================================ */
+.resources-wrap {
+  padding: 40px 0 60px;
+}
+.section-group {
+  margin-bottom: 44px;
+}
+.section-group:last-child { margin-bottom: 0; }
+
+.group-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--accent);
+}
+.group-icon {
+  width: 32px; height: 32px;
+  background: var(--accent);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.group-icon svg { color: white; }
+.group-title {
+  font-family: var(--font-serif);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--ink);
+}
+.group-subtitle {
+  font-size: 12.5px;
+  color: var(--ink-soft);
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+/* ============================================================
+   CARDS GRID
+   ============================================================ */
+.cards-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+@media (min-width: 620px) {
+  .cards-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 860px) {
+  .cards-grid.three { grid-template-columns: repeat(3, 1fr); }
+}
+
+.card {
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: 20px 20px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: box-shadow var(--transition), transform var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--accent);
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+.card:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-2px);
+}
+.card:hover::before { opacity: 1; }
+
+.card-title {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+}
+.card-desc {
+  font-size: 13px;
+  color: var(--ink-soft);
+  line-height: 1.6;
+  flex-grow: 1;
+}
+.card-audience {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--accent);
+  letter-spacing: .04em;
+}
+.card-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 9px 16px;
+  border-radius: 7px;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: background var(--transition), color var(--transition), box-shadow var(--transition);
+  min-height: 44px;
+  text-decoration: none !important;
+  white-space: nowrap;
+}
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+}
+.btn-primary:hover {
+  background: var(--accent-hover);
+  box-shadow: 0 2px 8px rgba(26,79,130,.25);
+  color: #fff;
+}
+.btn-ghost {
+  background: transparent;
+  color: var(--accent);
+  border: 1.5px solid var(--ghost-border);
+}
+.btn-ghost:hover {
+  background: var(--accent-sec);
+  border-color: var(--accent);
+}
+
+/* ============================================================
+   TOAST
+   ============================================================ */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: var(--ink);
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity .2s, transform .2s;
+  pointer-events: none;
+  z-index: 999;
+}
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer {
+  background: var(--ink);
+  color: rgba(255,255,255,.55);
+  padding: 28px 0;
+  text-align: center;
+}
+footer .name {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  color: #fff;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+footer .role-foot {
+  font-size: 12px;
+  margin-bottom: 6px;
+}
+footer a { color: rgba(255,255,255,.7); font-size: 12px; }
+footer a:hover { color: #fff; }
+footer .divider {
+  width: 40px; height: 1px;
+  background: rgba(255,255,255,.2);
+  margin: 12px auto;
+}
+footer .note {
+  font-size: 11px;
+  color: rgba(255,255,255,.35);
+  max-width: 400px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* ============================================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================================ */
+@media (max-width: 580px) {
+  .hero-inner {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .qr-block { flex-direction: row; align-items: center; gap: 12px; }
+  .qr-label { max-width: 140px; text-align: left; }
+  .how-inner { flex-direction: column; gap: 8px; }
+  .group-subtitle { display: none; }
+}
+</style>
+  <!-- ============================================================
+     GOOGLE ANALYTICS 4
+     Replace G-XXXXXXXXXX with your real Measurement ID
+     ============================================================ -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+</head>
+<body>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<header class="hero" role="banner">
+  <div class="container">
+    <div class="hero-eyebrow">Medical AI · Resource Hub</div>
+    <div class="hero-inner">
+      <div class="hero-text">
+        <h1 class="hero-title">AI in Medicine: Practical Tools,<br>Evaluations &amp; Teaching Guides</h1>
+        <p class="hero-subtitle">
+          A curated collection of practical AI resources for clinicians, basic scientists, clinical researchers,
+          faculty, residents, and institutional leaders. These pages explain what major AI tools do, where they
+          can help, where they can fail, and how to evaluate them before using them in clinical, educational,
+          research, or administrative workflows.
+        </p>
+        <div class="hero-byline">
+          <span class="name">Ram Paragi</span>
+          <span class="role">Director of Strategic Outcomes and Accreditation<br>LSU Health New Orleans School of Medicine</span>
+          <a class="email" href="mailto:rparag@lsuhsc.edu" aria-label="Email Ram Paragi">rparag@lsuhsc.edu</a>
+        </div>
+      </div>
+      </div>
+  </div>
+</header>
+
+<!-- ============================================================
+     HOW TO USE STRIP
+     ============================================================ -->
+<nav class="how-strip" aria-label="How to use these resources">
+  <div class="container">
+    <div class="how-inner">
+      <span class="how-label">How to use</span>
+      <ul class="how-list">
+        <li>New to AI? Start with the Lexicon</li>
+        <li>Evaluating a tool? Use the Vetting Framework</li>
+        <li>Teaching AI? Open the Teaching Guide</li>
+        <li>Safety concerns? Check Triage Brief or product evaluations</li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ============================================================
+     RESOURCES
+     ============================================================ -->
+<main class="resources-wrap" id="resources" aria-label="Resource sections">
+  <div class="container">
+
+    <!-- ── SECTION 1: Start Here ── -->
+    <section class="section-group" aria-labelledby="grp1-title">
+      <div class="group-header">
+        <div class="group-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        <h2 class="group-title" id="grp1-title">Start Here: Learn the Language</h2>
+        <span class="group-subtitle" aria-hidden="true">2 resources</span>
+      </div>
+      <div class="cards-grid" role="list">
+
+        <article class="card" role="listitem">
+          <h3 class="card-title">MedAI Lexicon</h3>
+          <p class="card-desc">A clinician-friendly AI glossary that translates technical terms into practical medical and research examples. Best for faculty, residents, and researchers who want shared vocabulary before using AI tools.</p>
+          <p class="card-audience">Clinicians · Researchers · Residents · Faculty</p>
+          <div class="card-actions">
+            <a href="https://medai-lexicon.vercel.app/" target="_blank" rel="noopener" class="btn btn-primary" aria-label="Open MedAI Lexicon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Learn the AI Vocabulary
+            </a>
+            <button class="btn btn-ghost" onclick="copyLink('https://medai-lexicon.vercel.app/', this)" aria-label="Copy MedAI Lexicon link">
+              Copy link
+            </button>
+          </div>
+        </article>
+
+        <article class="card" role="listitem">
+          <h3 class="card-title">MedAI Teaching Guide</h3>
+          <p class="card-desc">A ready-to-use AI teaching guide with 29 concepts, live tools, examples, and knowledge checks for medical students, residents, faculty, and clinical educators. Open during a session and use directly.</p>
+          <p class="card-audience">Medical Educators · Faculty Developers · Residency Programs</p>
+          <div class="card-actions">
+            <a href="https://medai-lexicon.vercel.app/teaching-guide" target="_blank" rel="noopener" class="btn btn-primary" aria-label="Open MedAI Teaching Guide">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Teach AI Concepts
+            </a>
+            <button class="btn btn-ghost" onclick="copyLink('https://medai-lexicon.vercel.app/teaching-guide', this)" aria-label="Copy Teaching Guide link">
+              Copy link
+            </button>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ── SECTION 2: Evaluate Before You Adopt ── -->
+    <section class="section-group" aria-labelledby="grp2-title">
+      <div class="group-header">
+        <div class="group-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+          </svg>
+        </div>
+        <h2 class="group-title" id="grp2-title">Evaluate Before You Adopt</h2>
+        <span class="group-subtitle" aria-hidden="true">2 resources</span>
+      </div>
+      <div class="cards-grid" role="list">
+
+        <article class="card" role="listitem">
+          <h3 class="card-title">AI Tool Vetting Framework</h3>
+          <p class="card-desc">A practical framework to decide whether an AI tool is worth buying, piloting, or rejecting. Gives clinicians and researchers scorecards, vendor questions, and clear go/no-go criteria.</p>
+          <p class="card-audience">Physicians · Researchers · Faculty · Procurement Teams</p>
+          <div class="card-actions">
+            <a href="https://datadrivenmed.github.io/AI-tool-Vetting/" target="_blank" rel="noopener" class="btn btn-primary" aria-label="Open AI Tool Vetting Framework">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Vet an AI Tool
+            </a>
+            <button class="btn btn-ghost" onclick="copyLink('https://datadrivenmed.github.io/AI-tool-Vetting/', this)" aria-label="Copy AI Tool Vetting link">
+              Copy link
+            </button>
+          </div>
+        </article>
+
+        <article class="card" role="listitem">
+          <h3 class="card-title">Enterprise AI Implementation Guide</h3>
+          <p class="card-desc">A leadership guide showing why model access alone does not create value. Explains the workflow, data, governance, evaluation, and accountability layers needed for real enterprise AI.</p>
+          <p class="card-audience">Health System Leaders · Academic Medical Centers · AI Governance Teams</p>
+          <div class="card-actions">
+            <a href="https://datadrivenmed.github.io/Enterprise-AI/" target="_blank" rel="noopener" class="btn btn-primary" aria-label="Open Enterprise AI Guide">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Build Enterprise AI
+            </a>
+            <button class="btn btn-ghost" onclick="copyLink('https://datadrivenmed.github.io/Enterprise-AI/', this)" aria-label="Copy Enterprise AI link">
+              Copy link
+            </button>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ── SECTION 3: Clinical AI Product Reviews ── -->
+    <section class="section-group" aria-labelledby="grp3-title">
+      <div class="group-header">
+        <div class="group-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+        </div>
+        <h2 class="group-title" id="grp3-title">Clinical AI Product Reviews</h2>
+        <span class="group-subtitle" aria-hidden="true">7 resources</span>
+      </div>
+      <div class="cards-grid three" role="list">
+
+        <article class="card" role="listitem">
+          <h3 class="card-title">OpenEvidence Assessment</h3>
+          <p class="card-desc">A clinical and strategic assessment covering evidence synthesis, decision support, failure modes, business model, and conflict-of-interest questions. For clinicians, program directors, and faculty who want to use OpenEvidence responsibly.</p>
+          <p class="card-audience">Clinicians · Residents · Faculty · Department Chairs</p>
+          <div class="card-actions">
+            <a href="https://datadrivenmed.github.io/OpenEvidence/" target="_blank" rel="noopener" class="btn btn-primary" aria-label="Open OpenEvidence Assessment">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Assess OpenEvidence
+            </a>
+            <button class="btn btn-ghost" onclick="copyLink('https://datadrivenmed.github.io/OpenEvidence/', this)" aria-label="Copy OpenEvidence link">
+              Copy link
+            </button>
+          </div>
+        </article>
+
+        <article class="card" role="listitem">
+          <h3 class="card-title">UpToDate Expert AI</h3>
+          <p class="card-desc">A plain-language assessment of UpToDate Expert AI: what it does well, where it is limited, and when clinicians should treat it as a search assistant rather than a patient-specific decision tool.</p>
+          <p class="card-audience">Clinicians · Clinical Faculty · Educators · Clinical Leaders</p>
+          <div class="card-actions">
+            <a href="https://datadrivenmed.github.io/UpToDateAI/" target="_blank" rel="noopener" class="btn btn-primary" aria-label="Open UpToDate Expert AI Assessment">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Evaluate UpToDate AI
+            </a>
+            <button class="btn btn-ghost" onclick="copyLink('https://datadrivenmed.github.io/UpToDateAI/', this)" aria-label="Copy UpToDate AI link">
+              Copy link
+            </button>
+          </div>
+        </article>
+
+        <article class="card" role="listitem">
+          <h3 class="card-title">ChatGPT for Clinicians</h3>
+          <p class="card-desc">A detailed evaluation of ChatGPT for Clinicians — what it is, how it performs, where it may fail, and how clinicians should verify its answers before relying on its outputs.</p>
+          <p class="card-audience">Clinicians · Physician Leaders · Medical Educators · Researchers</p>
+          <div class="card-actions">
+            <a href="https://datadrivenmed.github.io/ChatGPT-for-Clinicians/" target="_blank" rel="noopener" class="btn btn-primary" aria-label="Open ChatGPT for Clinicians Evaluation">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Review ChatGPT
+            </a>
+            <button class="btn btn-ghost" onclick="copyLink('https://datadrivenmed.github.io/ChatGPT-for-Clinicians/', this)" aria-label="Copy ChatGPT for Clinicians link">
+              Copy link
+            </button>
+          </div>
+        </article>
+
+        <article class="card" role="listitem">
+          <h3 class="card-title">The Ambient Scribe</h3>
+          <p class="card-desc">A clinical field guide to AI medical scribes — how the pipeline works, where notes can fail, how the vendor market is organized, and what institutions need to govern these tools before signing. Covers EHR integration, UME/GME policy, failure modes, and a vendor question checklist. Grounded in peer-reviewed evidence as of May 2026.</p>
+          <p class="card-audience">Physicians · Residents · CMIOs · Program Directors · GME Leadership</p>
+          <div class="card-actions">
+            <a href="https://datadrivenmed.github.io/The-Ambient-Scribe/" target="_blank" rel="noopener" class="btn btn-primary" aria-label="Open The Ambient Scribe field guide">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Evaluate AI Scribes
+            </a>
+            <button class="btn btn-ghost" onclick="copyLink('https://datadrivenmed.github.io/The-Ambient-Scribe/', this)" aria-label="Copy Ambient Scribe link">
+              Copy link
+            </button>
+          </div>
+        </article>
+
+        <article class="card" role="listitem">
+          <h3 class="card-title">Agentic EHR Field Guide</h3>
+          <p class="card-desc">A clinician-facing field guide to Epic's AI agents — Art, Penny, and Emmie. Covers what each agent does, a 10-layer failure pipeline, a full taxonomy of failure modes, an evaluation framework departments can actually run, governance structure, and a four-stage educational scaffolding model for UME and GME. Every claim is tagged by evidence tier: known, vendor-claimed, independently validated, or unknown.</p>
+          <p class="card-audience">Physicians · Residents · CMIOs · GME Leaders · Medical Educators · AI Governance Teams</p>
+          <div class="card-actions">
+            <a href="https://datadrivenmed.github.io/agentic-ehr-field-guide/" target="_blank" rel="noopener" class="btn btn-primary" aria-label="Open Agentic EHR Field Guide">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Evaluate Epic's AI Agents
+            </a>
+            <button class="btn btn-ghost" onclick="copyLink('https://datadrivenmed.github.io/agentic-ehr-field-guide/', this)" aria-label="Copy Agentic EHR Field Guide link">
+              Copy link
+            </button>
+          </div>
+        </article>
+
+        <article class="card" role="listitem">
+          <h3 class="card-title">Clinical LLM Benchmarks Evidence Report</h3>
+          <p class="card-desc">A technical evidence review of the Nature Medicine article, the public GitHub codebase, and the public MedQA and HealthBench datasets. It summarizes what was tested, what the local sample checks confirmed, and where public reproducibility stops.</p>
+          <p class="card-audience">Researchers · Clinicians · AI Governance Teams · Methods Reviewers</p>
+          <div class="card-actions">
+            <a href="https://datadrivenmed.github.io/LLM-Technical-Brief/" target="_blank" rel="noopener" class="btn btn-primary" aria-label="Open Clinical LLM Benchmarks Evidence Report">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Read the Technical Report
+            </a>
+            <button class="btn btn-ghost" onclick="copyLink('https://datadrivenmed.github.io/LLM-Technical-Brief/', this)" aria-label="Copy Clinical LLM Benchmarks report link">
+              Copy link
+            </button>
+          </div>
+        </article>
+
+        <article class="card" role="listitem">
+          <h3 class="card-title">Clinical LLM Benchmarks Faculty and Trainee Brief</h3>
+          <p class="card-desc">A shorter brief for residents, fellows, students, clinical faculty, and researchers. It explains what frontier models may be reasonable for, where strong oversight is still required, and how to teach the article without overclaiming.</p>
+          <p class="card-audience">Faculty · Residents · Fellows · Medical Students · Researchers</p>
+          <div class="card-actions">
+            <a href="https://datadrivenmed.github.io/LLM-Faculty-Brief/" target="_blank" rel="noopener" class="btn btn-primary" aria-label="Open Clinical LLM Benchmarks faculty and trainee brief">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Read the Faculty Brief
+            </a>
+            <button class="btn btn-ghost" onclick="copyLink('https://datadrivenmed.github.io/LLM-Faculty-Brief/', this)" aria-label="Copy faculty brief link">
+              Copy link
+            </button>
+          </div>
+        </article>
+
+      </div>
+    </section>
+    <section class="section-group" aria-labelledby="grp4-title">
+      <div class="group-header">
+        <div class="group-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+            <line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+          </svg>
+        </div>
+        <h2 class="group-title" id="grp4-title">AI Safety &amp; Failure Modes</h2>
+        <span class="group-subtitle" aria-hidden="true">2 resources</span>
+      </div>
+      <div class="cards-grid" role="list">
+
+        <article class="card" role="listitem">
+          <h3 class="card-title">ChatGPT Triage Safety Brief</h3>
+          <p class="card-desc">A patient safety brief explaining why AI triage tools can fail in emergencies, crisis scenarios, and edge cases. Based on peer-reviewed Mount Sinai findings. Useful for leaders, educators, and simulation teams.</p>
+          <p class="card-audience">UME · GME · Simulation Centers · Patient Safety Leaders</p>
+          <div class="card-actions">
+            <a href="https://datadrivenmed.github.io/ChatGPT-Triage/" target="_blank" rel="noopener" class="btn btn-primary" aria-label="Open ChatGPT Triage Safety Brief">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Understand AI Triage Risks
+            </a>
+            <button class="btn btn-ghost" onclick="copyLink('https://datadrivenmed.github.io/ChatGPT-Triage/', this)" aria-label="Copy Triage Safety link">
+              Copy link
+            </button>
+          </div>
+        </article>
+
+        <article class="card" role="listitem">
+          <h3 class="card-title">Thalamus Cortex Briefing</h3>
+          <p class="card-desc">Understand how AI is being used in residency application review, where applicant data can be misread, and what student affairs and program directors should verify before relying on AI-generated summaries.</p>
+          <p class="card-audience">Student Affairs · GME · Program Directors · Residency Advisors</p>
+          <div class="card-actions">
+            <a href="https://datadrivenmed.github.io/Thalamus/" target="_blank" rel="noopener" class="btn btn-primary" aria-label="Open Thalamus Cortex Briefing">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Review Thalamus AI Risks
+            </a>
+            <button class="btn btn-ghost" onclick="copyLink('https://datadrivenmed.github.io/Thalamus/', this)" aria-label="Copy Thalamus link">
+              Copy link
+            </button>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer role="contentinfo">
+  <div class="container">
+    <p class="name">Ram Paragi</p>
+    <p class="role-foot">Director of Strategic Outcomes and Accreditation · LSU Health New Orleans School of Medicine</p>
+    <a href="mailto:rparag@lsuhsc.edu">rparag@lsuhsc.edu</a>
+    <span style="color:rgba(255,255,255,.25);margin:0 8px;">·</span>
+    <a href="https://datadrivenmed.github.io" target="_blank" rel="noopener">datadrivenmed.github.io</a>
+    
+    <div style="margin-top:18px;display:flex;justify-content:center;gap:14px;align-items:center;">
+      <a href="https://www.linkedin.com/in/ramnarayan" target="_blank" rel="noopener" aria-label="LinkedIn" style="width:44px;height:44px;border-radius:999px;background:#fff;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 2px 8px rgba(0,0,0,.25);">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="#0A66C2"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8h5v16H0V8zm7.5 0h4.79v2.19h.07c.67-1.27 2.3-2.61 4.74-2.61C22.17 7.58 24 10.08 24 14.33V24h-5v-8.56c0-2.04-.04-4.66-2.84-4.66-2.84 0-3.27 2.22-3.27 4.51V24h-5V8z"/></svg>
+      </a>
+      <a href="https://swimed.substack.com/" target="_blank" rel="noopener" aria-label="Substack" style="width:44px;height:44px;border-radius:999px;background:#fff;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 2px 8px rgba(0,0,0,.25);">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="#FF6719"><path d="M3 3h18v3H3V3zm0 5h18v3H3V8zm0 5l9 4 9-4v8H3v-8z"/></svg>
+      </a>
+    </div>
+
+    <div class="divider"></div>
+    <p class="note">These pages reflect independent analysis and synthesis shared for educational purposes only. They do not represent institutional policy or endorsement by LSU Health New Orleans.</p>
+  </div>
+</footer>
+
+<!-- ============================================================
+     TOAST
+     ============================================================ -->
+<div class="toast" id="toast" role="status" aria-live="polite">Copied!</div>
+
+<!-- ============================================================
+     JS — clipboard copy + toast
+     ============================================================ -->
+<script>
+/* ── CONFIG ─────────────────────────────────────────────────
+   Update hubUrl below once you deploy this page.
+   Resource URLs and descriptions are hard-coded above for
+   reliability, but you can centralise them here if preferred.
+   ─────────────────────────────────────────────────────────── */
+const CONFIG = {
+  hubUrl: "https://datadrivenmed.github.io/resources/"
+};
+
+/* ── CLIPBOARD + TOAST ───────────────────────────────────── */
+const toast = document.getElementById('toast');
+let toastTimer;
+
+function copyLink(url, btn) {
+  navigator.clipboard.writeText(url).then(() => {
+    clearTimeout(toastTimer);
+    toast.classList.add('show');
+    toastTimer = setTimeout(() => toast.classList.remove('show'), 2000);
+    const orig = btn.textContent;
+    btn.textContent = 'Copied!';
+    setTimeout(() => btn.textContent = orig, 2000);
+  }).catch(() => {
+    /* fallback for non-secure contexts */
+    const ta = document.createElement('textarea');
+    ta.value = url;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    toast.classList.add('show');
+    toastTimer = setTimeout(() => toast.classList.remove('show'), 2000);
+  });
+}
+</script>
+
+</body>
+</html>

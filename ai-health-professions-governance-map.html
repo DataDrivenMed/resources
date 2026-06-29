@@ -1,14 +1,614 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="refresh" content="0; url=ai-health-professions-governance-map/">
-<link rel="canonical" href="https://datadrivenmed.github.io/resources/ai-health-professions-governance-map/">
-<title>Redirecting</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Tools Across Health Professions Training: Exposure, Evidence & Governance Map, Ram Paragi</title>
+<style>
+  :root {
+    --bg:#f9f8f6;--surface:#ffffff;--border:#e2e0db;
+    --text-primary:#1a1a1a;--text-secondary:#555550;--text-muted:#888880;
+    --accent:#1d4ed8;--accent-light:#eff6ff;
+    --amber:#b45309;--amber-light:#fffbeb;
+    --green:#166534;--green-light:#f0fdf4;
+    --tag-bg:#f1f0ed;--tag-text:#444440;
+    --font-sans:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--bg);color:var(--text-primary);font-family:var(--font-sans);font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased;}
+  .site-header{background:var(--surface);border-bottom:1px solid var(--border);padding:0 24px;}
+  .site-header-inner{max-width:960px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:52px;}
+  .site-brand{font-size:13px;font-weight:600;color:var(--text-primary);text-decoration:none;}
+  .site-brand span{color:var(--accent);}
+  .back-link{font-size:13px;color:var(--accent);text-decoration:none;}
+  .back-link:hover{text-decoration:underline;}
+  .hero{background:var(--surface);border-bottom:1px solid var(--border);padding:44px 24px 40px;}
+  .hero-inner{max-width:960px;margin:0 auto;}
+  .hero-eyebrow{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;}
+  .hero h1{font-size:26px;font-weight:800;letter-spacing:-.03em;line-height:1.2;color:var(--text-primary);margin-bottom:12px;max-width:720px;}
+  .hero-subtitle{font-size:14px;color:var(--text-muted);max-width:660px;margin-bottom:14px;line-height:1.6;}
+  .hero-thesis{font-size:15px;color:var(--text-secondary);max-width:680px;line-height:1.75;margin-bottom:10px;border-left:3px solid var(--accent);padding-left:16px;font-style:italic;}
+  .hero-context{font-size:14px;color:var(--text-secondary);max-width:680px;line-height:1.7;margin-bottom:14px;padding-left:19px;}
+  .hero-disclaimer{font-size:12.5px;color:var(--text-muted);max-width:660px;background:var(--tag-bg);padding:10px 14px;border-radius:5px;line-height:1.6;margin-bottom:16px;}
+  .audience-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+  .tag{font-size:11px;font-weight:500;background:var(--tag-bg);color:var(--tag-text);padding:3px 9px;border-radius:4px;}
+  .hero-meta{display:flex;gap:16px;flex-wrap:wrap;margin-top:14px;}
+  .hero-meta-item{font-size:12px;color:var(--text-muted);}
+  .toc-bar{background:var(--surface);border-bottom:1px solid var(--border);padding:12px 24px;overflow-x:auto;}
+  .toc-inner{max-width:960px;margin:0 auto;display:flex;gap:6px;flex-wrap:wrap;}
+  .toc-link{font-size:11.5px;font-weight:500;color:var(--accent);text-decoration:none;padding:4px 10px;background:var(--accent-light);border-radius:4px;white-space:nowrap;}
+  .toc-link:hover{text-decoration:underline;}
+  main{max-width:960px;margin:0 auto;padding:40px 24px 80px;}
+  .alert{border-radius:6px;padding:16px 20px;margin-bottom:28px;border-left:3px solid;font-size:14px;line-height:1.65;}
+  .alert-amber{background:var(--amber-light);border-color:var(--amber);color:#92400e;}
+  .alert-amber strong{color:var(--amber);}
+  .alert-blue{background:var(--accent-light);border-color:var(--accent);color:#1e3a8a;}
+  .alert-blue strong{color:var(--accent);}
+
+  /* Visual summary */
+  .visual-summary{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:28px 24px;margin-bottom:40px;}
+  .vs-title{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);margin-bottom:20px;text-align:center;}
+  .vs-flow{display:flex;align-items:flex-start;justify-content:center;gap:12px;flex-wrap:wrap;}
+  .vs-col{display:flex;flex-direction:column;align-items:center;gap:6px;min-width:130px;}
+  .vs-box{background:var(--tag-bg);border:1px solid var(--border);border-radius:6px;padding:8px 12px;text-align:center;width:100%;}
+  .vs-box.accent{background:var(--accent-light);border-color:#bfdbfe;}
+  .vs-box.amber{background:var(--amber-light);border-color:#fde68a;}
+  .vs-box.green{background:var(--green-light);border-color:#bbf7d0;}
+  .vs-box-label{font-size:11px;font-weight:700;letter-spacing:.03em;color:var(--text-primary);text-transform:uppercase;margin-bottom:2px;}
+  .vs-box-items{font-size:11px;color:var(--text-secondary);line-height:1.5;}
+  .vs-arrow{font-size:18px;color:var(--text-muted);margin-top:18px;}
+  .vs-connector{display:flex;align-items:center;padding-top:18px;}
+  @media(max-width:600px){.vs-flow{flex-direction:column;align-items:center;}.vs-arrow{transform:rotate(90deg);margin:0;padding:4px 0;}}
+
+  .section{margin-bottom:52px;scroll-margin-top:20px;}
+  .section-header{display:flex;align-items:center;gap:12px;margin-bottom:20px;padding-bottom:14px;border-bottom:2px solid var(--border);}
+  .section-label{font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--surface);background:var(--accent);padding:3px 9px;border-radius:3px;white-space:nowrap;}
+  .section-label.local{background:#dc2626;}
+  .section-label.nursing{background:#0891b2;}
+  .section-label.allied{background:#059669;}
+  .section-label.dental{background:#7c3aed;}
+  .section-label.pubhealth{background:#d97706;}
+  .section-label.research{background:#374151;}
+  .section-label.governance{background:#1d4ed8;}
+  .section h2{font-size:20px;font-weight:700;letter-spacing:-.02em;color:var(--text-primary);}
+  .section-intro{font-size:14px;color:var(--text-secondary);margin-bottom:20px;line-height:1.7;}
+  .gov-question{font-size:13px;color:#1e3a8a;background:var(--accent-light);border:1px solid #bfdbfe;border-radius:5px;padding:10px 14px;margin-bottom:16px;line-height:1.55;}
+  .gov-question strong{color:var(--accent);}
+
+  .affiliate-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;}
+  @media(max-width:640px){.affiliate-grid{grid-template-columns:1fr;}}
+  .affiliate-card{background:var(--surface);border:2px solid var(--border);border-radius:8px;padding:18px 20px;position:relative;overflow:hidden;}
+  .affiliate-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
+  .affiliate-card.lcmc::before{background:#dc2626;}
+  .affiliate-card.ochsner::before{background:#1d4ed8;}
+  .affiliate-card.olol::before{background:#059669;}
+  .affiliate-card-name{font-size:13px;font-weight:700;color:var(--text-primary);margin-bottom:4px;display:flex;align-items:center;gap:8px;}
+  .affiliate-tool-badge{font-size:10px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:2px 7px;border-radius:3px;background:#fef3c7;color:#92400e;}
+  .affiliate-card p{font-size:13px;color:var(--text-secondary);line-height:1.55;margin-top:6px;}
+  .affiliate-card .source{font-size:11px;color:var(--text-muted);margin-top:8px;font-style:italic;}
+
+  .discipline-block{background:var(--surface);border:1px solid var(--border);border-radius:8px;margin-bottom:14px;overflow:hidden;}
+  .discipline-block-header{padding:12px 18px;background:var(--tag-bg);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
+  .discipline-name{font-size:14px;font-weight:700;color:var(--text-primary);}
+  .evidence-badge{font-size:10px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;padding:2px 8px;border-radius:3px;white-space:nowrap;}
+  .eb-fda{background:var(--green-light);color:var(--green);}
+  .eb-peer{background:var(--accent-light);color:var(--accent);}
+  .eb-guidance{background:#ede9fe;color:#6d28d9;}
+  .eb-emerging{background:var(--tag-bg);color:var(--text-muted);}
+  .discipline-block-body{padding:16px 18px;}
+
+  .tool-grid{display:flex;flex-direction:column;gap:10px;}
+  .tool-item{display:grid;grid-template-columns:200px 1fr;gap:8px 14px;font-size:13.5px;align-items:start;}
+  @media(max-width:580px){.tool-item{grid-template-columns:1fr;}}
+  .tool-name{font-weight:600;color:var(--text-primary);line-height:1.4;}
+  .tool-tag{display:inline-block;font-size:9px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:1px 5px;border-radius:2px;margin-left:5px;vertical-align:middle;position:relative;top:-1px;}
+  .tt-fda{background:#dcfce7;color:#166534;}
+  .tt-local{background:#fee2e2;color:#991b1b;}
+  .tt-guidance{background:#ede9fe;color:#6d28d9;}
+  .tt-general{background:var(--tag-bg);color:var(--text-muted);}
+  .tool-desc{color:var(--text-secondary);line-height:1.55;}
+  .tool-note{font-size:11.5px;color:var(--text-muted);margin-top:3px;font-style:italic;}
+  .tool-divider{height:1px;background:var(--border);opacity:.5;margin:6px 0;}
+
+  .gov-matrix{width:100%;border-collapse:collapse;font-size:13px;background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden;}
+  .gov-matrix th{background:var(--tag-bg);padding:10px 14px;text-align:left;font-size:10.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--text-muted);border-bottom:1px solid var(--border);}
+  .gov-matrix td{padding:10px 14px;border-bottom:1px solid var(--border);color:var(--text-secondary);vertical-align:top;line-height:1.5;}
+  .gov-matrix tr:last-child td{border-bottom:none;}
+  .gov-matrix td:first-child{font-weight:600;color:var(--text-primary);white-space:nowrap;}
+  .status-dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:5px;vertical-align:middle;position:relative;top:-1px;}
+  .dot-red{background:#dc2626;}.dot-amber{background:#d97706;}.dot-green{background:#16a34a;}.dot-gray{background:#9ca3af;}
+
+  .tier-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;}
+  .tier-card{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:14px 16px;}
+  .tier-label{font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;margin-bottom:6px;}
+  .tier-card p{font-size:13px;color:var(--text-secondary);line-height:1.55;}
+  .tier-fda .tier-label{color:var(--green);}
+  .tier-peer .tier-label{color:var(--accent);}
+  .tier-guidance .tier-label{color:#6d28d9;}
+  .tier-emerging .tier-label{color:var(--text-muted);}
+
+  .implication-list{list-style:none;display:flex;flex-direction:column;gap:10px;}
+  .implication-list li{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:13px 16px;font-size:13.5px;color:var(--text-secondary);line-height:1.6;display:grid;grid-template-columns:26px 1fr;gap:10px;}
+  .implication-list li strong{color:var(--text-primary);display:block;margin-bottom:2px;}
+  .impl-num{font-size:11px;font-weight:700;color:var(--surface);background:var(--accent);border-radius:3px;padding:2px 5px;text-align:center;margin-top:2px;height:fit-content;}
+
+  .finding-box{background:var(--accent-light);border:1px solid #bfdbfe;border-radius:8px;padding:18px 22px;margin:20px 0;}
+  .finding-label{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;}
+  .finding-box p{font-size:14px;color:#1e3a8a;line-height:1.65;}
+
+  /* Five questions */
+  .five-q{background:var(--surface);border:2px solid var(--accent);border-radius:10px;padding:24px 26px;margin-bottom:0;}
+  .five-q-title{font-size:14px;font-weight:700;color:var(--accent);margin-bottom:16px;letter-spacing:-.01em;}
+  .five-q-list{list-style:none;display:flex;flex-direction:column;gap:10px;}
+  .five-q-list li{display:grid;grid-template-columns:24px 1fr;gap:10px;font-size:14px;color:var(--text-secondary);line-height:1.55;}
+  .five-q-num{font-size:12px;font-weight:800;color:var(--accent);padding-top:1px;}
+  .five-q-list li strong{color:var(--text-primary);}
+
+  .page-footer{max-width:960px;margin:0 auto;padding:24px 24px 48px;border-top:1px solid var(--border);}
+  .footer-meta{font-size:12px;color:var(--text-muted);line-height:1.7;}
+  .footer-meta a{color:var(--accent);text-decoration:none;}
+  .footer-meta a:hover{text-decoration:underline;}
+</style>
 </head>
 <body>
-<p>Redirecting to <a href="ai-health-professions-governance-map/">the updated page</a>.</p>
-<script>location.replace('ai-health-professions-governance-map/');</script>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="https://datadrivenmed.github.io/resources" class="site-brand">Medical<span>AI</span> · Resource Hub</a>
+    <a href="https://datadrivenmed.github.io/resources" class="back-link">← All resources</a>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Institutional AI Strategy · HSC Governance</div>
+    <h1>AI Tools Across Health Professions Training: Exposure, Evidence & Governance Map</h1>
+    <p class="hero-subtitle">A cross-discipline AI exposure and governance map across the health sciences center.</p>
+    <p class="hero-thesis">AI governance at a health sciences center should not start with a vendor list. It should start with an exposure map: which students, faculty, and trainees encounter which AI tools, in which settings, under which privacy, documentation, clinical, and affiliate-site rules.</p>
+    <p class="hero-context">AI exposure is expanding faster than institutional guidance. This resource helps faculty, trainees, and staff recognize where AI is already present so they can ask the right governance, privacy, and supervision questions before using it.</p>
+    <p class="hero-disclaimer">Tool examples are included to illustrate AI exposure and governance needs. Inclusion does not imply endorsement, procurement recommendation, clinical approval, or permission for use with protected data.</p>
+    <div class="audience-tags">
+      <span class="tag">CIOs</span><span class="tag">Deans</span><span class="tag">Program Directors</span><span class="tag">IT &amp; Compliance</span><span class="tag">AI Governance Teams</span><span class="tag">All Schools</span>
+    </div>
+    <div class="hero-meta">
+      <span class="hero-meta-item">Ram Paragi</span>
+      <span class="hero-meta-item">Living resource · periodically updated</span>
+    </div>
+  </div>
+</div>
+
+<div class="toc-bar">
+  <div class="toc-inner">
+    
+    <a href="#visual" class="toc-link">Overview</a>
+    <a href="#local" class="toc-link">Local affiliate AI</a>
+    <a href="#medicine" class="toc-link">Medicine</a>
+    <a href="#nursing" class="toc-link">Nursing</a>
+    <a href="#allied" class="toc-link">Allied health</a>
+    <a href="#dental" class="toc-link">Dentistry</a>
+    <a href="#pubhealth" class="toc-link">Public health</a>
+    <a href="#research" class="toc-link">Graduate studies</a>
+    <a href="#general" class="toc-link">General-purpose AI</a>
+    <a href="#governance" class="toc-link">Governance matrix</a>
+    <a href="#five" class="toc-link">Five questions</a>
+    <a href="#evidence" class="toc-link">Evidence tiers</a>
+  </div>
+</div>
+
+<main>
+
+
+
+  <div class="alert alert-amber">
+    <strong>AI exposure now spans every health profession.</strong> At present, this exposure does not appear to be addressed through a single cross-school, affiliate-aware guidance document visible to all programs. Nursing students, PT students, respiratory therapy students, dental students, and public health students encounter AI tools at rotation sites daily, under affiliate-site governance frameworks that may differ from each other and from any home-program guidance.
+  </div>
+
+
+
+  <!-- VISUAL SUMMARY -->
+  <div class="section" id="visual">
+    <div class="section-header">
+      <span class="section-label" style="background:#374151;">Overview</span>
+      <h2>How AI enters the health sciences center</h2>
+    </div>
+    <p class="section-intro">Before reading by discipline, this diagram shows how AI reaches trainees, through schools, clinical environments, and research workflows, and why governance must address all three layers.</p>
+    <div class="visual-summary">
+      <div class="vs-title">AI exposure pathway across the health sciences center</div>
+      <div class="vs-flow">
+        <div class="vs-col">
+          <div class="vs-box accent">
+            <div class="vs-box-label">Schools</div>
+            <div class="vs-box-items">Medicine · Nursing · Allied Health<br>Dentistry · Public Health · Graduate Studies</div>
+          </div>
+        </div>
+        <div class="vs-connector"><div class="vs-arrow">→</div></div>
+        <div class="vs-col">
+          <div class="vs-box amber">
+            <div class="vs-box-label">AI types encountered</div>
+            <div class="vs-box-items">Clinical AI · Educational AI<br>Research AI · Administrative AI<br>Consumer / General-purpose AI</div>
+          </div>
+        </div>
+        <div class="vs-connector"><div class="vs-arrow">→</div></div>
+        <div class="vs-col">
+          <div class="vs-box green">
+            <div class="vs-box-label">Governance layer</div>
+            <div class="vs-box-items">Privacy &amp; BAA · Documentation<br>Affiliate policy · Human review<br>Approved-use inventory</div>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--border);">
+        <div class="vs-title" style="margin-bottom:12px;">Affiliate sites where trainees rotate</div>
+        <div class="vs-flow">
+          <div class="vs-col">
+            <div class="vs-box" style="border-top:3px solid #dc2626;">
+              <div class="vs-box-label" style="color:#dc2626;">LCMC Health</div>
+              <div class="vs-box-items">Nabla ambient AI · Epic AI</div>
+            </div>
+          </div>
+          <div class="vs-connector"><div class="vs-arrow" style="color:var(--border);">·</div></div>
+          <div class="vs-col">
+            <div class="vs-box" style="border-top:3px solid #1d4ed8;">
+              <div class="vs-box-label" style="color:#1d4ed8;">Ochsner Health</div>
+              <div class="vs-box-items">DeepScribe ambient AI · Epic AI</div>
+            </div>
+          </div>
+          <div class="vs-connector"><div class="vs-arrow" style="color:var(--border);">·</div></div>
+          <div class="vs-col">
+            <div class="vs-box" style="border-top:3px solid #059669;">
+              <div class="vs-box-label" style="color:#059669;">OLOL / Other</div>
+              <div class="vs-box-items">Epic AI · Site-specific tools</div>
+            </div>
+          </div>
+        </div>
+        <p style="font-size:12.5px;color:var(--text-muted);text-align:center;margin-top:14px;">Each affiliate site governs its own AI tools. No shared coordination mechanism currently exists across all health professions programs.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LOCAL AFFILIATE -->
+  <div class="section" id="local">
+    <div class="section-header">
+      <span class="section-label local">Local</span>
+      <h2>AI already deployed at affiliate sites</h2>
+    </div>
+    <div class="gov-question"><strong>Governance question:</strong> Which AI tools do trainees encounter at each affiliate site, and whose policies govern their use, the affiliate's or the home program's?</div>
+    <p class="section-intro">LSUHSC-NO trainees rotate through LCMC Health, Ochsner Health, and OLOL. Each system has made independent AI procurement decisions. Trainees from all programs encounter these tools in documentation workflows and clinical environments, often without home-program guidance on which rules apply.</p>
+    <div class="affiliate-grid">
+      <div class="affiliate-card lcmc">
+        <div class="affiliate-card-name">LCMC Health <span class="affiliate-tool-badge">Nabla</span></div>
+        <p>LCMC Health selected Nabla for systemwide ambient AI implementation, integrated with Epic. LSUHSC trainees rotating through LCMC sites may encounter AI-generated documentation in clinical workflows. Attestation and documentation standards are governed by LCMC's policy, not the home program's.</p>
+        <p class="source">Source: <a href="https://www.prnewswire.com/news-releases/lcmc-health-selects-nabla-to-power-systemwide-ambient-ai-implementation-302631608.html" target="_blank" rel="noopener">PR Newswire, Dec 3 2025: LCMC Health selects Nabla for systemwide ambient AI implementation</a></p>
+      </div>
+      <div class="affiliate-card ochsner">
+        <div class="affiliate-card-name">Ochsner Health <span class="affiliate-tool-badge">DeepScribe</span></div>
+        <p>Ochsner Health selected DeepScribe for ambient AI documentation across 4,700+ clinicians. Trainees rotating through Ochsner sites are inside an ambient AI documentation environment governed by Ochsner's policy, which may differ from any guidance their home program has issued.</p>
+        <p class="source">Source: <a href="https://news.ochsner.org/news-releases/ochsner-health-selects-deepscribe-to-bring-ambient-ai-to-their-4-700-clinicians/" target="_blank" rel="noopener">Ochsner Health news release, Jul 30 2024: Ochsner selects DeepScribe for 4,700 clinicians</a></p>
+      </div>
+      <div class="affiliate-card olol">
+        <div class="affiliate-card-name">OLOL / Other Affiliates <span class="affiliate-tool-badge">Monitoring</span></div>
+        <p>AI governance policies at OLOL and other affiliate sites are independently maintained. LCMC is informally reported to be developing its own clinical AI policy for clinicians. As affiliate policies evolve, the need for home-program coordination increases rather than decreases.</p>
+        <p class="source">Informal faculty report. Policy status unconfirmed in writing. No public announcement available at time of publication.</p>
+      </div>
+      <div class="affiliate-card" style="border-color:#e2e0db;">
+        <div class="affiliate-card-name">Epic AI (all affiliate sites)</div>
+        <p>Epic AI functions, including AI charting, note drafting, order queueing, patient-message drafting, handoff summaries, billing support, and scheduling-related workflows, are embedded in the EHR at LCMC, Ochsner, and OLOL. Trainees may encounter AI-assisted content as part of routine EHR interactions across all three sites.</p>
+        <p class="source">Source: <a href="https://www.epic.com/software/art/" target="_blank" rel="noopener">Epic.com: Art for Clinicians product documentation</a></p>
+      </div>
+    </div>
+    <div class="finding-box">
+      <div class="finding-label">Governance implication</div>
+      <p>Across health AI policy and regulatory guidance, a substantial share of operational responsibility falls on providers and health systems, including tool approval, patient-data protection, clinician oversight, documentation review, and user training. Affiliate governance does not cover the exposure of trainees whose home program has no AI governance framework. This applies to medical, nursing, allied health, dental, and public health students equally.</p>
+    </div>
+  </div>
+
+  <!-- MEDICINE -->
+  <div class="section" id="medicine">
+    <div class="section-header">
+      <span class="section-label">Medicine</span>
+      <h2>School of Medicine, MD/DO trainees</h2>
+    </div>
+    <div class="gov-question"><strong>Governance question:</strong> Which tools have executed BAAs across affiliate sites, and what is the approved-use standard for each rotation environment?</div>
+    <p class="section-intro">Medicine has the most mature clinical AI tool landscape. These tools are assessed in detail elsewhere on this resource hub and are listed here for cross-school comparison.</p>
+    <div class="discipline-block">
+      <div class="discipline-block-header"><span class="discipline-name">Clinical and educational AI in medicine</span><span class="evidence-badge eb-peer">Peer-reviewed</span></div>
+      <div class="discipline-block-body">
+        <div class="tool-grid">
+          <div class="tool-item"><div class="tool-name">OpenEvidence</div><div class="tool-desc">Clinical evidence synthesis. 760,000+ NPI-verified clinicians, 20M+ monthly consultations. 44.9% of all reported physician AI usage (2025 Physicians AI Report). <span class="tool-note">Full assessment: datadrivenmed.github.io/OpenEvidence</span></div></div>
+          <div class="tool-divider"></div>
+          <div class="tool-item"><div class="tool-name">UpToDate Expert AI</div><div class="tool-desc">AI-augmented clinical reference layered on UpToDate's evidence base. Not a patient-specific decision tool. <span class="tool-note">Full assessment: datadrivenmed.github.io/UpToDateAI</span></div></div>
+          <div class="tool-divider"></div>
+          <div class="tool-item"><div class="tool-name">Nabla / DeepScribe / Abridge / Nuance DAX <span class="tool-tag tt-local">Local</span></div><div class="tool-desc">Ambient scribes generating AI-assisted clinical notes. Nabla deployed at LCMC, DeepScribe at Ochsner. Attestation liability sits with the attending regardless of AI generation. <span class="tool-note">Full assessment: datadrivenmed.github.io/The-Ambient-Scribe</span></div></div>
+          <div class="tool-divider"></div>
+          <div class="tool-item"><div class="tool-name">Epic AI functions</div><div class="tool-desc">AI charting, note drafting, order and diagnosis suggestions, patient-message drafting, handoff summaries, billing, and scheduling support embedded in the EHR at affiliate sites. <span class="tool-note">Full assessment: datadrivenmed.github.io/agentic-ehr-field-guide</span></div></div>
+          <div class="tool-divider"></div>
+          <div class="tool-item"><div class="tool-name">Thalamus / Cortex</div><div class="tool-desc">AI used in residency application screening. Affects how medical students are evaluated before they know AI is involved. <span class="tool-note">Full assessment: datadrivenmed.github.io/Thalamus</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NURSING -->
+  <div class="section" id="nursing">
+    <div class="section-header">
+      <span class="section-label nursing">Nursing</span>
+      <h2>School of Nursing, BSN and graduate programs</h2>
+    </div>
+    <div class="gov-question"><strong>Governance question:</strong> What AI tools do nursing students encounter at clinical sites, and do home-program orientations address AI-generated risk scores, documentation, and predictive alerts?</div>
+    <p class="section-intro">The 2025 ANA Code of Ethics (Provision 7.5) explicitly recognizes that machine learning, augmented intelligence, and AI can influence clinical decision-making, patient data, alerts, and downstream records, and that nurses must understand these tools.</p>
+    <div class="discipline-block">
+      <div class="discipline-block-header"><span class="discipline-name">Nursing education and exam preparation</span><span class="evidence-badge eb-peer">Peer-reviewed</span></div>
+      <div class="discipline-block-body">
+        <div class="tool-grid">
+          <div class="tool-item"><div class="tool-name">GoodNurse <span class="tool-tag tt-guidance">Evidence</span></div><div class="tool-desc">AI tutor built for nursing students on NCLEX content including Next Generation NCLEX formats. University of Rochester School of Nursing (2025): users averaged 95.1% vs 88.8% for non-users in an ECG course (p=.0048). Education tool, not a clinical decision-support tool.</div></div>
+          <div class="tool-divider"></div>
+          <div class="tool-item"><div class="tool-name">Shadow Health (Elsevier)</div><div class="tool-desc">AI-enhanced virtual patient simulation used in nursing education. Generates synthetic patient cases for clinical reasoning practice. Governance questions center on AI-generated assessment content and faculty oversight of simulation design.</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="discipline-block">
+      <div class="discipline-block-header"><span class="discipline-name">Clinical AI at nursing rotation sites</span><span class="evidence-badge eb-emerging">Active deployment</span></div>
+      <div class="discipline-block-body">
+        <div class="tool-grid">
+          <div class="tool-item"><div class="tool-name">Epic AI nursing workflows <span class="tool-tag tt-local">Local</span></div><div class="tool-desc">Epic AI functions support nursing documentation, shift summaries, clinical alerts, and order management. Nursing students at LCMC and Ochsner encounter these outputs in clinical rotations. Home-program guidance on scope and limitations is not yet standardized.</div></div>
+          <div class="tool-divider"></div>
+          <div class="tool-item"><div class="tool-name">care.ai, virtual nursing and ambient monitoring</div><div class="tool-desc">AI-assisted virtual nursing platform using room sensors for patient safety surveillance, fall detection, and escalation workflows. Nursing students may encounter this category of ambient AI in clinical environments without formal orientation to how it works or who bears escalation responsibility.</div></div>
+          <div class="tool-divider"></div>
+          <div class="tool-item"><div class="tool-name">Predictive tools, fall risk, sepsis alerts, deterioration scores</div><div class="tool-desc">AI-generated risk scores deployed across affiliate hospitals. Students who act on these outputs need training on model limitations, alarm fatigue, and escalation responsibility. Underlying models vary by hospital and are rarely disclosed to trainees.</div></div>
+          <div class="tool-divider"></div>
+          <div class="tool-item"><div class="tool-name">AI-assisted medication and infusion systems</div><div class="tool-desc">AI-assisted medication dispensing and smart infusion pumps with predictive dosing are deployed in acute care settings. These are medical device categories distinct from EHR-based AI and carry their own regulatory and governance requirements.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ALLIED HEALTH -->
+  <div class="section" id="allied">
+    <div class="section-header">
+      <span class="section-label allied">Allied Health</span>
+      <h2>Allied health programs, PT, OT, RT, SLP, audiology, radiologic technology</h2>
+    </div>
+    <div class="gov-question"><strong>Governance question:</strong> Do allied health students receive site-specific AI orientation before clinical rotations, and does any home-program document address the tools they will encounter?</div>
+    <p class="section-intro">Allied health programs represent some of the widest AI exposure gaps in health professions governance. Trainees rotate through affiliate sites where AI tools are already operational, in ICUs, imaging suites, therapy environments, and documentation systems, with no cross-site coordination framework.</p>
+
+    <div class="discipline-block">
+      <div class="discipline-block-header"><span class="discipline-name">Physical therapy and occupational therapy</span><span class="evidence-badge eb-guidance">Professional guidance, APTA 2025</span></div>
+      <div class="discipline-block-body">
+        <div class="tool-grid">
+          <div class="tool-item"><div class="tool-name">Ambient documentation scribes <span class="tool-tag tt-guidance">APTA</span></div><div class="tool-desc">Abridge, Nabla, Suki, DeepScribe, and therapy-specific scribes generate AI-assisted SOAP notes and functional limitation documentation. APTA issued a practice advisory in September 2025 covering documentation responsibility and legal and regulatory considerations. Attestation obligations apply equally to PT and OT students during clinical placements.</div></div>
+          <div class="tool-divider"></div>
+          <div class="tool-item"><div class="tool-name">WebPT / Net Health AI documentation</div><div class="tool-desc">Leading PT and OT EHR platforms have integrated AI documentation assistance, auto-populating functional limitation and impairment fields. AI-generated functional limitation language carries payer-compliance risk if not reviewed before attestation.</div></div>
+          <div class="tool-divider"></div>
+          <div class="tool-item"><div class="tool-name">Motion analysis and gait analytics</div><div class="tool-desc">Markerless motion capture and pose estimation tools are entering clinical PT use. Validation varies by task, camera angle, body type, and clinical diagnosis. Students interpreting AI motion outputs need training on failure modes and override criteria.</div></div>
+          <div class="tool-divider"></div>
+          <div class="tool-item"><div class="tool-name">Remote therapeutic monitoring (RTM), 2026 CMS CPT expansion</div><div class="tool-desc">AI-enabled RTM platforms track home exercise adherence and symptom flagging. The 2026 CMS update expanded RTM CPT codes (98979, 98984, 98985). Students in RTM workflows need to understand the billing and documentation obligations these systems create.</div></div>
+          <div class="tool-divider"></div>
+          <div class="tool-item"><div class="tool-name">OT documentation AI</div><div class="tool-desc">AI tools generating ADL goals, functional status notes, and home safety documentation for occupational therapy. AI-generated OT content requires clinician review before attestation. Scope-of-practice and payer-compliance risks apply to student use.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="discipline-block">
+      <div class="discipline-block-header"><span class="discipline-name">Respiratory therapy</span><span class="evidence-badge eb-fda">FDA-cleared tools in use</span></div>
+      <div class="discipline-block-body">
+        <div class="tool-grid">
+          <div class="tool-item"><div class="tool-name">Etiometry <span class="tool-tag tt-fda">FDA-cleared</span></div><div class="tool-desc">One of the stronger ICU clinical intelligence examples relevant to RT workflows. FDA-cleared platform surfacing respiratory drive, sedation level, and hemodynamic stability to support extubation readiness. Clark et al. (2025, Journal of Pediatric Critical Care): 30% reduction in postoperative ventilation time, 20% shorter ICU stays, extubation failure dropped from 13% to 0% after implementation.</div></div>
+          <div class="tool-divider"></div>
+          <div class="tool-item"><div class="tool-name">Hamilton INTELLiVENT-ASV</div><div class="tool-desc">Intelligent closed-loop ventilation mode embedded in Hamilton Medical ventilators. Automatically adjusts settings based on patient-ventilator interaction data. RT students may learn inside environments where AI-supported ventilation influences care decisions. Understanding override logic and escalation responsibility is essential.</div></div>
+          <div class="tool-divider"></div>
+          <div class="tool-item"><div class="tool-name">Protocol adherence and weaning dashboards</div><div class="tool-desc">RT-specific dashboards display AI-assisted readiness indicators for spontaneous breathing trials and ventilator bundle compliance. Students need to know whether AI outputs are advisory or operational, a distinction that varies by hospital and is rarely explained at orientation.</div></div>
+          <div class="tool-divider"></div>
+          <div class="tool-item"><div class="tool-name">Predictive deterioration and sepsis tools</div><div class="tool-desc">AI-driven respiratory failure prediction and ICU deterioration alerts are active in affiliate ICUs. RT students encountering these alerts carry escalation responsibility without always having governance clarity on model accuracy or failure modes.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="discipline-block">
+      <div class="discipline-block-header"><span class="discipline-name">Speech-language pathology and audiology</span><span class="evidence-badge eb-guidance">Professional guidance, ASHA</span></div>
+      <div class="discipline-block-body">
+        <div class="tool-grid">
+          <div class="tool-item"><div class="tool-name">Dragon Copilot / Heidi / Nabla <span class="tool-tag tt-guidance">ASHA</span></div><div class="tool-desc">AI clinical documentation tools used by SLPs in hospital and clinic settings. ASHA has issued specific generative AI guidance for audiologists and SLPs covering evidence-based practice considerations and clinical responsibility. Trainees using AI scribes carry the same attestation obligations as other clinicians.</div></div>
+          <div class="tool-divider"></div>
+          <div class="tool-item"><div class="tool-name">Automated speech analytics</div><div class="tool-desc">AI tools for speech recognition, fluency analysis, and voice analytics are entering clinical SLP practice. Bias by accent, language, age, and disability is a primary governance concern. Models trained on limited data may produce clinically misleading outputs for underrepresented patient groups.</div></div>
+          <div class="tool-divider"></div>
+          <div class="tool-item"><div class="tool-name">SpeechVive</div><div class="tool-desc">AI device for Parkinson's patients that detects speech patterns in real time and triggers improved vocal output. Meaningful clinical use case with direct student exposure during neurological rehabilitation rotations.</div></div>
+          <div class="tool-divider"></div>
+          <div class="tool-item"><div class="tool-name">AAC and assistive communication AI</div><div class="tool-desc">AI-supported augmentative and alternative communication tools. Equity, disability access, and patient data privacy are the primary governance concerns.</div></div>
+          <div class="tool-divider"></div>
+          <div class="tool-item"><div class="tool-name">Audiology: hearing-aid fitting algorithms and automated audiometry</div><div class="tool-desc">AI-assisted hearing-aid fitting and automated auditory screening tools are entering audiology practice. Device responsibility and patient-specific adjustment carry distinct governance requirements from software-based AI tools.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="discipline-block">
+      <div class="discipline-block-header"><span class="discipline-name">Radiologic technology</span><span class="evidence-badge eb-fda">Most mature allied-health AI, 1,000+ FDA-cleared algorithms</span></div>
+      <div class="discipline-block-body">
+        <div class="tool-grid">
+          <div class="tool-item"><div class="tool-name">Viz.ai / RapidAI <span class="tool-tag tt-fda">FDA-cleared</span></div><div class="tool-desc">Automated stroke triage and care coordination. Radiology technologists may trigger AI-assisted workflows around flagged scans before radiologist review, raising questions about scope, escalation protocols, and documentation responsibility for students in these environments.</div></div>
+          <div class="tool-divider"></div>
+          <div class="tool-item"><div class="tool-name">Aidoc / Annalise.ai <span class="tool-tag tt-fda">FDA-cleared</span></div><div class="tool-desc">Radiology worklist prioritization and critical finding alerts. Students in departments using AI triage should understand how the prioritization model works and who bears responsibility for delayed reviews.</div></div>
+          <div class="tool-divider"></div>
+          <div class="tool-item"><div class="tool-name">Image acquisition and QA AI</div><div class="tool-desc">AI for positioning support, protocol selection, artifact detection, and dose optimization is integrated into imaging equipment. Students must understand which outputs come from regulated devices versus uncleared software.</div></div>
+          <div class="tool-divider"></div>
+          <div class="tool-item"><div class="tool-name">FDA AI-enabled medical device list <span class="tool-tag tt-fda">FDA</span></div><div class="tool-desc">Radiology and imaging represent the largest category on the FDA AI-enabled medical device list. Third-party trackers report more than 1,000 radiology-focused AI authorizations. Students should know which clinical AI outputs come from regulated devices versus uncleared tools.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DENTISTRY -->
+  <div class="section" id="dental">
+    <div class="section-header">
+      <span class="section-label dental">Dentistry</span>
+      <h2>School of Dentistry</h2>
+    </div>
+    <div class="gov-question"><strong>Governance question:</strong> Are dental students receiving orientation to AI-assisted radiograph findings before interpreting them independently, and does the school have a policy on AI-generated treatment recommendations?</div>
+    <p class="section-intro">Dental AI is one of the fastest-growing areas of health AI adoption, with AI-assisted radiograph analysis, caries detection, and treatment planning tools already in commercial deployment.</p>
+    <div class="discipline-block">
+      <div class="discipline-block-header"><span class="discipline-name">Dental AI, clinical and educational</span><span class="evidence-badge eb-emerging">Rapidly developing</span></div>
+      <div class="discipline-block-body">
+        <div class="tool-grid">
+          <div class="tool-item"><div class="tool-name">Overjet <span class="tool-tag tt-fda">FDA-cleared</span></div><div class="tool-desc">AI-assisted dental radiograph analysis for caries detection, bone loss measurement, and annotation. FDA-cleared for clinical use. Students interpreting AI-annotated radiographs need to understand model limitations and override criteria before accepting AI-generated findings.</div></div>
+          <div class="tool-divider"></div>
+          <div class="tool-item"><div class="tool-name">Pearl / VideaAI / Diagnocat</div><div class="tool-desc">AI dental radiology platforms for caries detection, periodontal assessment, and tooth segmentation. Who reviews AI-flagged findings, how false positives are communicated to patients, and what documentation standards apply to AI-assisted diagnoses, these are open governance questions for dental education programs.</div></div>
+          <div class="tool-divider"></div>
+          <div class="tool-item"><div class="tool-name">AI treatment planning, orthodontics and implants</div><div class="tool-desc">AI tools for orthodontic planning, implant positioning, and aligner simulation. Student reliance on AI-generated treatment options raises questions about independent clinical reasoning and informed consent processes.</div></div>
+          <div class="tool-divider"></div>
+          <div class="tool-item"><div class="tool-name">AI patient communication overlays</div><div class="tool-desc">AI visual overlays on radiographs for patient education and case presentation. AI-generated visual displays for patient communication require consent, accuracy verification, and explainability standards.</div></div>
+          <div class="tool-divider"></div>
+          <div class="tool-item"><div class="tool-name">AI coding and billing (dental)</div><div class="tool-desc">AI-assisted CDT code selection and claims management are entering dental practice. Students in environments using AI billing tools need to understand the compliance and documentation obligations these systems create.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PUBLIC HEALTH -->
+  <div class="section" id="pubhealth">
+    <div class="section-header">
+      <span class="section-label pubhealth">Public Health</span>
+      <h2>School of Public Health</h2>
+    </div>
+    <div class="gov-question"><strong>Governance question:</strong> When public health students use AI-generated risk signals or surveillance outputs, is there clear guidance on verification, escalation, and public communication standards?</div>
+    <p class="section-intro">Public health AI extends beyond clinical settings into population data, surveillance infrastructure, and community communication. The CDC reported 103 AI solutions or use cases as of December 31, 2025, describing AI as central to outbreak detection, tailored interventions, and public health data modernization.</p>
+    <div class="discipline-block">
+      <div class="discipline-block-header"><span class="discipline-name">Public health AI, surveillance, analytics, and communication</span><span class="evidence-badge eb-emerging">Emerging institutional relevance</span></div>
+      <div class="discipline-block-body">
+        <div class="tool-grid">
+          <div class="tool-item"><div class="tool-name">Disease surveillance AI</div><div class="tool-desc">AI-assisted outbreak detection, syndromic surveillance, and wastewater analytics tools. Students working with public health surveillance data encounter AI-generated risk signals that carry questions about false positives, public communication protocols, and decision authority.</div></div>
+          <div class="tool-divider"></div>
+          <div class="tool-item"><div class="tool-name">Population health analytics</div><div class="tool-desc">AI risk stratification, hotspotting, and care gap identification. Bias, equity, and explainability are primary governance concerns. Models trained on historically underserved populations may reproduce existing disparities.</div></div>
+          <div class="tool-divider"></div>
+          <div class="tool-item"><div class="tool-name">Public health messaging AI</div><div class="tool-desc">AI-assisted plain-language health communication and multilingual outreach tools. Misinformation risk, cultural appropriateness, and community trust are governance concerns when AI generates public-facing health content.</div></div>
+          <div class="tool-divider"></div>
+          <div class="tool-item"><div class="tool-name">Research and grants AI, NIH RePORTER, Dimensions, Scopus AI</div><div class="tool-desc">Literature synthesis, data modeling, and grant intelligence tools. Reproducibility, disclosure, and data governance apply to AI-assisted research in public health as in other disciplines.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GRADUATE STUDIES -->
+  <div class="section" id="research">
+    <div class="section-header">
+      <span class="section-label research">Research</span>
+      <h2>Graduate studies and research</h2>
+    </div>
+    <div class="gov-question"><strong>Governance question:</strong> Are graduate students and researchers using AI with research data that may contain PHI, and does the institution have disclosure and data-governance standards for AI-assisted publications?</div>
+    <p class="section-intro">Graduate students and postdoctoral researchers across all schools are among the heaviest users of AI tools, for literature review, scientific writing, coding, data analysis, and grant development. This use is largely without institutional governance and creates distinct risks around research integrity, data security, and PHI exposure.</p>
+    <div class="discipline-block">
+      <div class="discipline-block-header"><span class="discipline-name">Research and graduate student AI exposure</span><span class="evidence-badge eb-emerging">Needs governance attention</span></div>
+      <div class="discipline-block-body">
+        <div class="tool-grid">
+          <div class="tool-item"><div class="tool-name">Literature synthesis, Elicit, Scite, Consensus, Semantic Scholar, Perplexity</div><div class="tool-desc">AI-assisted literature review tools used across health sciences research. Primary concern: hallucinated citations and unreliable evidence synthesis presented as authoritative. Institutional guidance on citation verification is not yet standard at most academic medical centers.</div></div>
+          <div class="tool-divider"></div>
+          <div class="tool-item"><div class="tool-name">Scientific writing, ChatGPT, Claude, Gemini, Microsoft Copilot</div><div class="tool-desc">General-purpose AI used for manuscript drafting, abstract writing, grant narrative development, and editing. Authorship, disclosure, and journal policy vary widely and change rapidly. Institutional standards for AI disclosure in research publications are not yet uniform.</div></div>
+          <div class="tool-divider"></div>
+          <div class="tool-item"><div class="tool-name">Coding and data analysis, GitHub Copilot, Claude Code, Cursor, ChatGPT</div><div class="tool-desc">AI coding assistants used for statistical analysis, data pipeline development, and bioinformatics. Reproducibility, code review, and PHI exposure in research data are primary governance concerns. AI-generated code that processes research data requires human review before publication.</div></div>
+          <div class="tool-divider"></div>
+          <div class="tool-item"><div class="tool-name">Biomedical research AI, AlphaFold, imaging analysis, omics tools</div><div class="tool-desc">Specialized AI for protein structure prediction, histopathology image analysis, and multi-omics data integration used in LSUHSC-NO research labs. AI outputs in these areas require specialist interpretation and validation before publication.</div></div>
+          <div class="tool-divider"></div>
+          <div class="tool-item"><div class="tool-name">Grant intelligence, NIH RePORTER, Dimensions, Scopus AI</div><div class="tool-desc">AI-assisted grant landscape analysis and funding opportunity identification. Competitive intelligence and responsible use considerations apply. Institutional review of AI-generated funding intelligence is not standard practice.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GENERAL PURPOSE -->
+  <div class="section" id="general">
+    <div class="section-header">
+      <span class="section-label" style="background:#374151;">General</span>
+      <h2>General-purpose AI, what students and faculty actually use</h2>
+    </div>
+    <div class="gov-question"><strong>Governance question:</strong> Do students and faculty know that consumer AI accounts carry no HIPAA coverage, and is there institutional guidance on the difference between enterprise and consumer AI tool access?</div>
+    <p class="section-intro">Across every school, the most commonly used AI tools are free, personal, and general-purpose. They carry no institutional BAA, no PHI protection, and no training-specific governance. Their ubiquity is the baseline governance problem.</p>
+    <div class="discipline-block">
+      <div class="discipline-block-header"><span class="discipline-name">Consumer AI tools in academic and clinical use</span><span class="evidence-badge eb-emerging">No BAA, no PHI protection</span></div>
+      <div class="discipline-block-body">
+        <div class="tool-grid">
+          <div class="tool-item"><div class="tool-name">ChatGPT (OpenAI) <span class="tool-tag tt-general">Consumer</span></div><div class="tool-desc">Most widely used general-purpose AI across all health professions programs. Free consumer accounts have no HIPAA coverage. Used for case write-ups, study aids, documentation drafting, literature summaries, and clinical reasoning support across all schools.</div></div>
+          <div class="tool-divider"></div>
+          <div class="tool-item"><div class="tool-name">Claude (Anthropic) <span class="tool-tag tt-general">Consumer</span></div><div class="tool-desc">General-purpose AI used for writing, analysis, coding, and research support. Consumer accounts have no institutional BAA. Used by graduate students and researchers for literature synthesis and manuscript drafting.</div></div>
+          <div class="tool-divider"></div>
+          <div class="tool-item"><div class="tool-name">Microsoft Copilot / Gemini / Grok / Perplexity <span class="tool-tag tt-general">Consumer</span></div><div class="tool-desc">Consumer AI tools with significant adoption across health professions students. Some Microsoft enterprise AI services may be covered under Microsoft's HIPAA BAA when deployed under an eligible institutional agreement and properly configured. Consumer Copilot and personal AI accounts should not be treated as approved for PHI under any circumstances.</div></div>
+          <div class="tool-divider"></div>
+          <div class="tool-item"><div class="tool-name">NotebookLM (Google) <span class="tool-tag tt-general">Consumer</span></div><div class="tool-desc">AI-powered document analysis and synthesis tool. No institutional BAA. Use with research data or clinical materials creates PHI exposure risk.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GOVERNANCE MATRIX -->
+  <div class="section" id="governance">
+    <div class="section-header">
+      <span class="section-label governance">Governance</span>
+      <h2>Cross-discipline governance status</h2>
+    </div>
+    <p class="section-intro">The same core governance questions apply across every school and program. The answers differ by site and tool, which is the problem no single school can solve on its own.</p>
+    <div style="overflow-x:auto;">
+      <table class="gov-matrix">
+        <thead>
+          <tr><th>Program</th><th>Clinical AI exposure</th><th>Program-level governance</th><th>BAA clarity</th><th>Affiliate coordination</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Medicine (MD/DO)</td><td><span class="status-dot dot-red"></span>High: multiple tools at affiliate sites</td><td><span class="status-dot dot-amber"></span>In development</td><td><span class="status-dot dot-amber"></span>Inventory needed</td><td><span class="status-dot dot-red"></span>Cross-school process not yet visible</td></tr>
+          <tr><td>Nursing (BSN/grad)</td><td><span class="status-dot dot-red"></span>High: Epic AI, scribes, predictive tools</td><td><span class="status-dot dot-red"></span>Not yet standardized</td><td><span class="status-dot dot-red"></span>Needs confirmation</td><td><span class="status-dot dot-red"></span>Cross-school process not yet visible</td></tr>
+          <tr><td>Physical therapy / OT</td><td><span class="status-dot dot-amber"></span>Moderate: scribes, motion AI, RTM</td><td><span class="status-dot dot-red"></span>Not yet standardized</td><td><span class="status-dot dot-red"></span>Needs confirmation</td><td><span class="status-dot dot-red"></span>Cross-school process not yet visible</td></tr>
+          <tr><td>Respiratory therapy</td><td><span class="status-dot dot-red"></span>High: AI ventilators, ICU dashboards</td><td><span class="status-dot dot-red"></span>Not yet standardized</td><td><span class="status-dot dot-red"></span>Needs confirmation</td><td><span class="status-dot dot-red"></span>Cross-school process not yet visible</td></tr>
+          <tr><td>SLP / Audiology</td><td><span class="status-dot dot-amber"></span>Moderate: scribes, speech analytics</td><td><span class="status-dot dot-red"></span>Not yet standardized</td><td><span class="status-dot dot-red"></span>Needs confirmation</td><td><span class="status-dot dot-red"></span>Cross-school process not yet visible</td></tr>
+          <tr><td>Radiologic technology</td><td><span class="status-dot dot-red"></span>High: FDA-cleared AI in imaging workflows</td><td><span class="status-dot dot-red"></span>Not yet standardized</td><td><span class="status-dot dot-amber"></span>Device-level varies</td><td><span class="status-dot dot-red"></span>Cross-school process not yet visible</td></tr>
+          <tr><td>Dentistry</td><td><span class="status-dot dot-amber"></span>Moderate: dental radiology AI, planning tools</td><td><span class="status-dot dot-red"></span>Not yet standardized</td><td><span class="status-dot dot-red"></span>Needs confirmation</td><td><span class="status-dot dot-red"></span>Cross-school process not yet visible</td></tr>
+          <tr><td>Public health</td><td><span class="status-dot dot-amber"></span>Moderate: surveillance, analytics tools</td><td><span class="status-dot dot-red"></span>Not yet standardized</td><td><span class="status-dot dot-red"></span>Needs confirmation</td><td><span class="status-dot dot-amber"></span>CDC/state frameworks exist</td></tr>
+          <tr><td>Graduate studies / research</td><td><span class="status-dot dot-red"></span>High: general-purpose AI, research tools</td><td><span class="status-dot dot-red"></span>Not yet standardized</td><td><span class="status-dot dot-red"></span>Consumer tools, no BAA</td><td><span class="status-dot dot-amber"></span>Journal policies vary</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="finding-box" style="margin-top:20px;">
+      <div class="finding-label">The HSC-level argument</div>
+      <p>AI exposure is distributed across every school and affiliate site in this health sciences center. A shared BAA inventory visible across all schools, an approved-use framework communicable to trainees at each affiliate site, and a coordination mechanism that keeps pace with affiliate AI policy development at LCMC, Ochsner, and OLOL, these are HSC-level needs, not problems any one school can solve in isolation.</p>
+    </div>
+  </div>
+
+  <!-- FIVE QUESTIONS -->
+  <div class="section" id="five">
+    <div class="section-header">
+      <span class="section-label" style="background:#dc2626;">Before You Use</span>
+      <h2>Five questions to ask before using any AI tool</h2>
+    </div>
+    <p class="section-intro">Regardless of school, program, or setting, these five questions apply every time a student, trainee, faculty member, or staff member considers using an AI tool with clinical, educational, research, or institutional data.</p>
+    <div class="five-q">
+      <div class="five-q-title">Before using any AI tool, ask:</div>
+      <ul class="five-q-list">
+        <li><div class="five-q-num">1</div><div><strong>Is this tool institutionally approved?</strong> Check whether the tool appears on an approved-use list from your program, school, or IT. If no list exists, that is itself a governance signal, ask your program director or compliance office before using it with any protected data.</div></li>
+        <li><div class="five-q-num">2</div><div><strong>Does it handle PHI or other sensitive institutional data?</strong> If the task involves patient information, student records, unpublished research data, financial data, or HR data, the tool must have an executed BAA or equivalent institutional data agreement. Free consumer accounts do not meet this standard.</div></li>
+        <li><div class="five-q-num">3</div><div><strong>Is human review required before the output is used?</strong> AI-generated clinical notes, diagnostic suggestions, billing codes, risk scores, and research outputs all require verification by a qualified person before acting on them. Identify who is responsible for that review in your setting.</div></li>
+        <li><div class="five-q-num">4</div><div><strong>Which affiliate policy applies?</strong> If you are on rotation at LCMC, Ochsner, OLOL, or another affiliate site, that site's AI policy governs your use, not your home program's policy. Ask at orientation what rules apply to external trainees at that location.</div></li>
+        <li><div class="five-q-num">5</div><div><strong>Where can you report concerns?</strong> If an AI tool produces a clinically concerning output, a data privacy concern, or an unexpected failure, know your escalation path before you encounter the problem. At present, most programs do not have a named AI concern-reporting contact. If yours does not, note it for your program director.</div></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- EVIDENCE TIERS -->
+  <div class="section" id="evidence">
+    <div class="section-header">
+      <span class="section-label" style="background:#374151;">Evidence</span>
+      <h2>Evidence tiers used on this page</h2>
+    </div>
+    <p class="section-intro">Tools and categories on this page are not equally validated. Four tiers are used consistently throughout.</p>
+    <div class="tier-grid">
+      <div class="tier-card tier-fda"><div class="tier-label">FDA-cleared</div><p>AI-enabled medical devices authorized for clinical use by the FDA. Examples: Viz.ai, RapidAI, Aidoc, Overjet, Etiometry. Highest regulatory standard. Governance still required for deployment and trainee use.</p></div>
+      <div class="tier-card tier-peer"><div class="tier-label">Peer-reviewed</div><p>Tools or categories with published clinical or educational outcome data. Examples: GoodNurse (University of Rochester, 2025), Etiometry (Clark et al., 2025). Evidence base supports institutional confidence but does not eliminate governance requirements.</p></div>
+      <div class="tier-card tier-guidance"><div class="tier-label">Professional guidance</div><p>Tools or categories addressed in guidance from APTA, ASHA, ANA, AMA, AAMC, or similar bodies. Examples: ambient scribes in PT (APTA 2025), generative AI for SLP/audiology (ASHA), AI in nursing (ANA 2025). Society guidance signals professional consensus without full clinical validation.</p></div>
+      <div class="tier-card tier-emerging"><div class="tier-label">Emerging</div><p>Tools confirmed in active deployment without full peer-reviewed validation. Examples: Nabla at LCMC, DeepScribe at Ochsner, general-purpose AI across all programs. Highest governance urgency because exposure is real and institutional standards are not yet in place.</p></div>
+    </div>
+  </div>
+
+</main>
+
+<footer class="page-footer">
+  <p class="footer-meta">
+    Ram Paragi · <a href="mailto:rparag@lsuhsc.edu">rparag@lsuhsc.edu</a> ·
+    <a href="https://datadrivenmed.github.io/resources">datadrivenmed.github.io/resources</a><br>
+    Educational resource. Not legal guidance. Not clinical policy. Institutional policies and affiliate-site requirements always supersede this resource. Tool examples illustrate AI exposure and governance needs, inclusion does not imply endorsement, procurement recommendation, clinical approval, or permission for use with protected data.
+  </p>
+</footer>
+
 </body>
 </html>

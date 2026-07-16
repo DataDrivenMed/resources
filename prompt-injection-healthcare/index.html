@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Instructions You Did Not Type | Prompt Injection in Healthcare</title>
+<meta name="description" content="A visual healthcare guide to prompt injection, data exposure, connected-agent risk, and the PAUSE framework for safer AI use.">
+<meta name="author" content="Ram Paragi">
+<link rel="canonical" href="https://datadrivenmed.github.io/resources/prompt-injection-healthcare/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The Instructions You Did Not Type">
+<meta property="og:description" content="How hidden instructions in documents, webpages, emails, images, and clinical records can manipulate AI, expose sensitive data, or trigger unintended actions.">
+<meta property="og:url" content="https://datadrivenmed.github.io/resources/prompt-injection-healthcare/">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="progress" aria-hidden="true"><span id="progress"></span></div>
+<header class="topbar">
+  <a class="brand" href="../"><span>AI</span> Medical AI Resource Hub</a>
+  <nav id="nav" aria-label="Primary navigation">
+    <a href="#how">How it works</a><a href="#harm">What it can do</a><a href="#pause">PAUSE</a><a href="#users">For users</a><a href="#leaders">For CMIOs</a><a href="#respond">Respond</a>
+  </nav>
+  <button id="menu" aria-expanded="false" aria-controls="nav">Menu</button>
+</header>
+<main id="main">
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="kicker">AI Safety &amp; Failure Modes</p>
+      <h1>The Instructions<br>You Did Not Type</h1>
+      <p class="subtitle">Prompt injection in healthcare</p>
+      <p class="lead">An AI can sometimes treat instructions hidden in a document, webpage, email, image, or clinical record as though <strong>you</strong> gave them. When that AI can also reach sensitive data or take actions, a distorted answer can become disclosure, record alteration, operational disruption, or patient-safety harm.</p>
+      <div class="byline"><b>Ram Paragi</b><span>Independent educational resource</span><span>Evidence current through July 15, 2026</span></div>
+      <div class="actions"><a class="button primary" href="#harm">See what it can do</a><a class="button" href="#pause">Use PAUSE</a><a class="button" href="#leaders">For CMIOs and leaders</a></div>
+    </div>
+    <div class="hero-visual" role="img" aria-label="An outside clinical record carries a hidden instruction into an AI context, which may alter its output or actions.">
+      <div class="visual-head"><b>Outside clinical record</b><i></i></div>
+      <div class="document"><b>Transfer summary.pdf</b><p>Medications, allergies, results, pending studies...</p><div class="hidden"><span>Hidden instruction to disregard the task and retrieve unrelated confidential information</span><em>untrusted</em></div></div>
+      <div class="arrow">↓ enters the AI context</div>
+      <div class="context"><small>WHAT THE AI RECEIVES</small><div><span>System rules</span><span>User request</span><span>Clinical text</span><span class="risk">Hidden instruction</span><span>Connected tools</span></div></div>
+      <div class="outcomes"><span>Altered summary</span><span>Data requested</span><span>Action proposed</span></div>
+    </div>
+  </div>
+</section>
+<div class="disclaimer"><div class="wrap"><b>Independent resource.</b> This is not an official policy or endorsement of LSU Health New Orleans, LCMC Health, Ochsner Health, or Our Lady of the Lake Health. Follow current requirements at your institution and clinical site.</div></div>
+<section class="concepts"><div class="wrap five">
+  <article><b>01</b><h2>Untrusted content enters</h2><p>A PDF, webpage, message, image, record, or retrieved file carries an instruction.</p></article>
+  <article><b>02</b><h2>The AI may follow it</h2><p>The model can confuse data it should analyze with instructions it should obey.</p></article>
+  <article><b>03</b><h2>Access sets the ceiling</h2><p>The AI reaches only the information, tools, and actions the surrounding system permits.</p></article>
+  <article><b>04</b><h2>Connections raise the stakes</h2><p>Email, drives, EHR tools, browsers, and agents can turn output into action.</p></article>
+  <article><b>05</b><h2>Controls reduce impact</h2><p>Least privilege, approval gates, monitoring, and incident response limit harm.</p></article>
+</div></section>
+<section class="section paths"><div class="wrap">
+  <p class="kicker">Choose your path</p><h2 class="display">Start with what you need today.</h2>
+  <div class="three cards">
+    <a href="#users"><i>🩺</i><h3>I use AI in my work</h3><p>Recognize warning signs, protect sensitive information, and know when to stop.</p><b>Open user guidance →</b></a>
+    <a href="#leaders"><i>🏥</i><h3>I govern clinical AI</h3><p>Review permissions, identity, vendor terms, auditability, and action boundaries.</p><b>Open CMIO guidance →</b></a>
+    <a href="#respond"><i>⚠️</i><h3>Something looks suspicious</h3><p>Stop the task, preserve evidence, assess downstream use, and report locally.</p><b>Open response steps →</b></a>
+  </div>
+</div></section>
+<section class="section story" id="how"><div class="wrap story-grid">
+  <div class="flow" id="flow" data-stage="1">
+    <div class="node n1"><i>📄</i><span><b>Untrusted content</b><small>Document, webpage, message, image</small></span></div><u></u>
+    <div class="node n2"><i>🧠</i><span><b>AI context</b><small>Trusted instructions and untrusted data</small></span></div><u></u>
+    <div class="node n3"><i>🔌</i><span><b>Data and tools</b><small>Records, drives, email, EHR, APIs</small></span></div><u></u>
+    <div class="node n4"><i>↗</i><span><b>Consequence</b><small>Distortion, disclosure, alteration, action</small></span></div>
+  </div>
+  <div class="steps">
+    <article data-stage="1" class="active"><b>01</b><h2>The instruction arrives inside content.</h2><p>Indirect prompt injection may be concealed in material the AI is asked to read, summarize, retrieve, classify, or act upon. The user may never see or type it.</p></article>
+    <article data-stage="2"><b>02</b><h2>Content and instructions share the context.</h2><p>The AI receives system rules, the user task, retrieved information, and tool results together. Applications can prioritize trusted instructions, but no perfect instruction-data boundary currently exists.</p></article>
+    <article data-stage="3"><b>03</b><h2>The AI uses what it can reach.</h2><p>A standalone chatbot may only change its answer. A connected assistant may also search institutional repositories, use an authenticated session, or call software tools.</p></article>
+    <article data-stage="4"><b>04</b><h2>The manipulated behavior becomes harm.</h2><p>The AI may omit a warning, retrieve unrelated information, expose PHI or institutional IP, write misleading text, send a message, alter a workflow, or invoke a dangerous tool.</p></article>
+  </div>
+</div></section>
+<section class="section dark" id="harm"><div class="wrap">
+  <p class="kicker">What prompt injection can actually do</p><h2 class="display">From a wrong answer to a system-level event.</h2>
+  <p class="intro">Prompt injection does not create universal access. It manipulates the AI into misusing access that already exists.</p>
+  <div class="ceiling"><i>🔑</i><p><b>Permissions form the ceiling of harm.</b><br>The AI can generally reach only the records, folders, applications, credentials, tools, and actions made available by the surrounding system.</p></div>
+  <div class="three harm-grid">
+    <article><i>🧾</i><h3>Manipulated clinical output</h3><p>Omit, distort, reprioritize, or fabricate information while appearing to complete the requested task.</p><small><b>Requires:</b> untrusted content and reliance on the generated answer.</small></article>
+    <article><i>🔓</i><h3>PHI or institutional IP exposure</h3><p>Retrieve and reveal reachable patient data, unpublished research, proprietary methods, contracts, strategy, credentials, or operational knowledge.</p><small><b>Requires:</b> read access plus a visible output or external channel.</small></article>
+    <article><i>✉️</i><h3>Unauthorized communication</h3><p>Send email, share files, upload documents, post content, or disclose information to the wrong destination.</p><small><b>Requires:</b> messaging, browser, drive, or upload tools.</small></article>
+    <article><i>✍️</i><h3>Record and workflow alteration</h3><p>Insert misleading text, modify fields, change status, delete information, or alter schedules and queues.</p><small><b>Requires:</b> write access to the EHR, database, or workflow tool.</small></article>
+    <article><i>🪪</i><h3>Misuse of authenticated authority</h3><p>Act through the user's account, API token, connector, or non-human service identity.</p><small><b>Requires:</b> delegated credentials and weak action-level approval.</small></article>
+    <article><i>♻️</i><h3>Persistent manipulation</h3><p>Remain in a repository, email archive, retrieval corpus, application record, or memory and influence later tasks.</p><small><b>Requires:</b> storage and repeated retrieval, sometimes with write access.</small></article>
+    <article><i>💊</i><h3>Patient-safety harm</h3><p>Change triage, medication advice, documentation, evidence synthesis, or warnings that influence care.</p><small><b>Requires:</b> downstream clinical use without adequate verification.</small></article>
+    <article><i>⏱️</i><h3>Operational or financial disruption</h3><p>Trigger loops, repeated searches, excessive tool calls, delays, or avoidable token and cloud costs.</p><small><b>Requires:</b> automation or metered services without effective limits.</small></article>
+    <article><i>⌨️</i><h3>Technical system compromise</h3><p>In a dangerously designed agent, attacker-influenced text may reach code, shell, or administrative tools.</p><small><b>Requires:</b> powerful execution tools plus unsafe integration.</small></article>
+  </div>
+</div></section>
+<section class="quote"><div class="reading">Prompt injection is not just a <em>bad prompt</em>. It is a trust, permissions, and system-design problem.</div></section>
+<section class="section"><div class="reading">
+  <p class="kicker">Clarifying the mechanism</p><h2 class="display">Can it get “inside the data”?</h2>
+  <p class="intro">A malicious instruction can be stored inside a document, record, email, knowledge base, vector database, or memory and manipulate the AI when retrieved later. This is persistent hostile content, not the same as conventional malware automatically infecting every file. Further spread or alteration requires write access and additional system capabilities.</p>
+  <div class="two compare"><article><b>Direct injection</b><p>The manipulating instruction is entered directly into the conversation.</p></article><article><b>Indirect injection</b><p>The instruction is carried by a PDF, webpage, message, image, scan, tool result, or retrieved record.</p></article></div>
+</div></section>
+<section class="section examples"><div class="wrap"><p class="kicker">Healthcare pathways</p><h2 class="display">Where the instruction can enter.</h2><div class="three example-grid">
+  <article><i>💬</i><h3>Patient portal message</h3><p>Hidden content attempts to change a summary or redirect the assistant toward unrelated chart information.</p></article>
+  <article><i>📠</i><h3>Scanned outside record</h3><p>Low-contrast text influences extraction, transfer documentation, or clinical prioritization.</p></article>
+  <article><i>🌐</i><h3>Medical webpage</h3><p>A browsing assistant is redirected toward confidential files or an outbound request.</p></article>
+  <article><i>🖼️</i><h3>Clinical image</h3><p>Embedded visual content changes how a vision-language model describes or interprets an image.</p></article>
+  <article><i>📚</i><h3>Institutional retrieval corpus</h3><p>A compromised policy or guideline is repeatedly retrieved and skews later answers.</p></article>
+  <article><i>🤖</i><h3>Tool-using agent</h3><p>Manipulated content influences an agent that can email, upload, schedule, document, or modify records.</p></article>
+</div></div></section>
+<section class="section pause" id="pause"><div class="wrap">
+  <p class="kicker">A five-question safety check</p><h2 class="display">PAUSE before AI reaches data or actions.</h2>
+  <div class="pause-word" aria-label="PAUSE"><b>P</b><b>A</b><b>U</b><b>S</b><b>E</b></div>
+  <div class="five pause-grid">
+    <article><h3>P · Permissions</h3><p>What records, applications, credentials, folders, tools, or actions can the AI access?</p></article>
+    <article><h3>A · Approved tool and account</h3><p>Is this exact product, account type, feature, and workflow approved here?</p></article>
+    <article><h3>U · Untrusted content</h3><p>Is the AI reading material an outside party or external system could manipulate?</p></article>
+    <article><h3>S · Sensitive or strategic information</h3><p>Does the task involve PHI, credentials, research, plans, contracts, or proprietary knowledge?</p></article>
+    <article><h3>E · External action and exposure</h3><p>Can the AI send, upload, retain, disclose, modify, publish, order, or schedule anything?</p></article>
+  </div>
+  <p class="note">PAUSE is an educational framework created for this resource. It is not an externally validated clinical or regulatory standard.</p>
+</div></section>
+<section class="section" id="users"><div class="wrap">
+  <p class="kicker">For clinicians, trainees, faculty, and researchers</p><h2 class="display">What to do before and during use.</h2>
+  <div class="two user-grid"><ul class="checks"><li>Use only institutionally approved tools for institutional or clinical information.</li><li>Confirm the exact product, account, feature, permitted data, PHI conditions, and clinical site.</li><li>Do not assume a paid or business account is approved for PHI.</li><li>Grant the smallest necessary permissions and avoid broad, undefined agent requests.</li><li>Verify the information and destination before any upload, message, record change, order, or external action.</li><li>Independently verify clinical content before patient-care or medical-record use.</li></ul><aside><h3>Stop when the AI...</h3><ul><li>unexpectedly changes the task;</li><li>asks for credentials or broader access;</li><li>proposes sending information elsewhere;</li><li>retrieves unrelated confidential material;</li><li>acts before showing the exact data and destination.</li></ul><b>Do not test suspected malicious content in a production clinical environment.</b></aside></div>
+</div></section>
+<section class="section leaders" id="leaders"><div class="wrap">
+  <p class="kicker">Executive governance chapter</p><h2 class="display">For CMIOs, CIOs, CISOs, privacy officers, and AI governance leaders.</h2>
+  <div class="two exec-intro"><p class="intro">Prompt injection is one risk among several. Data retention, model improvement, feedback, excessive agency, and institutional IP dependency require separate controls and contractual review.</p><aside><h3>Institutional AI sovereignty</h3><p>The practical ability to govern institutional data, models, workflows, permissions, evaluation assets, costs, and operational knowledge, including the ability to audit, export, change providers, and maintain continuity.</p></aside></div>
+  <div class="table-wrap"><table><thead><tr><th>Risk</th><th>Primary mechanism</th><th>Healthcare example</th><th>Primary safeguards</th></tr></thead><tbody>
+  <tr><td>Prompt injection</td><td>Untrusted content influences AI behavior</td><td>A hidden instruction changes an outside-record summary</td><td>Separation, limited permissions, review, approval gates</td></tr>
+  <tr><td>User disclosure</td><td>A person voluntarily enters protected information</td><td>Patient data is pasted into an unsuitable account</td><td>Approved tools, minimization, policy and education</td></tr>
+  <tr><td>Vendor retention</td><td>Prompts, outputs, logs, feedback, or metadata are stored under applicable terms</td><td>A conversation remains available under retention settings</td><td>Contract review, configuration, retention controls</td></tr>
+  <tr><td>Excessive agency</td><td>AI has more access or authority than required</td><td>An assistant can read files and send messages without granular approval</td><td>Least privilege, scoped connectors, human authorization</td></tr>
+  <tr><td>Institutional IP dependency</td><td>Workflows and knowledge become difficult to move</td><td>A critical process depends on one proprietary platform</td><td>Portability, model flexibility, export rights, contractual safeguards</td></tr>
+  </tbody></table></div>
+  <details open><summary>What healthcare leaders should ask <span>Click to collapse or expand</span></summary><div class="detail-body"><ul class="questions"><li>Is this a consumer, institutionally managed, or contracted enterprise product?</li><li>Who owns prompts, outputs, workflow configurations, evaluation datasets, and institutional knowledge?</li><li>What is retained, for how long, and under which configuration?</li><li>What changes when a user submits feedback?</li><li>What does zero data retention cover, and what operational records remain?</li><li>Can the institution audit what the AI accessed and every action it took?</li><li>Can prompts, workflows, evaluations, and institutional knowledge be exported?</li><li>Can the workflow switch models without being rebuilt?</li><li>Is a BAA available and applicable to this exact product and workflow?</li><li>Who reviews changes in models, features, pricing, and data handling?</li></ul></div></details>
+</div></section>
+<section class="section guidance"><div class="reading">
+  <p class="kicker">How current guidance frames the problem</p><h2 class="display">Recurring principles, without personality profiles.</h2>
+  <details><summary>Model safety and reliability <span>Click to expand</span></summary><div class="detail-body"><p>Capable systems remain imperfect. High-consequence use requires meaningful supervision, controlled deployment, independent verification, and explicit limits on authority.</p></div></details>
+  <details><summary>Agent and application security <span>Click to expand</span></summary><div class="detail-body"><p>The highest-risk pattern combines private information, untrusted content, and a channel that can communicate or act outside the task. Permission and action boundaries matter as much as model behavior.</p></div></details>
+  <details><summary>Enterprise governance and institutional control <span>Click to expand</span></summary><div class="detail-body"><p>Organizations should know what data, infrastructure, workflow configurations, evaluation assets, and institutional knowledge they control. Portability, pricing, auditability, and contractual protection are governance questions.</p></div></details>
+  <details><summary>Standards and healthcare leadership <span>Click to expand</span></summary><div class="detail-body"><p>Prompt injection should be addressed through lifecycle governance, risk ownership, identity, approved use, monitoring, incident response, patient safety, downtime planning, and recurring reassessment rather than a single filter.</p></div></details>
+</div></section>
+<section class="section response" id="respond"><div class="wrap">
+  <p class="kicker">When something looks wrong</p><h2 class="display">Stop, contain, preserve, report.</h2>
+  <div class="four response-grid"><article><b>1</b><h3>Stop</h3><p>End the AI task and do not authorize further actions.</p></article><article><b>2</b><h3>Contain</h3><p>Disconnect or revoke unnecessary tool access when permitted and safe.</p></article><article><b>3</b><h3>Preserve</h3><p>Capture prompts, outputs, timestamps, destinations, and affected records according to policy.</p></article><article><b>4</b><h3>Report</h3><p>Use the approved IT, privacy, security, compliance, clinical-informatics, or patient-safety process.</p></article></div>
+</div></section>
+<section class="section local"><div class="wrap two">
+  <div><p class="kicker">Local policy matters</p><h2 class="display">Ask the institution and the clinical site.</h2><p>Public guidance is incomplete and can change. This review did not locate a current comprehensive approved-product list for LSU Health New Orleans, LCMC Health, Ochsner Health, or Our Lady of the Lake Health. That does not mean internal guidance is absent.</p><b>Obtain a current update from local IT, information security, privacy, compliance, clinical informatics, or AI governance.</b></div>
+  <ul class="questions"><li>Which tools, accounts, and features are approved?</li><li>May any approved product receive PHI, and under what agreement?</li><li>Which data types are prohibited?</li><li>May AI connect to email, drives, calendars, browsers, or the EHR?</li><li>Are browser or computer-use agents permitted?</li><li>Are AI-generated notes permitted in the medical record?</li><li>What retention, model-improvement, and feedback rules apply?</li><li>How should suspicious behavior be reported?</li><li>Does approval at one clinical site extend to another?</li></ul>
+</div></section>
+<section class="section takeaway"><div class="wrap"><p class="kicker">What to remember Monday morning</p><h2 class="display">Content can become instructions. Access determines the blast radius. Use PAUSE.</h2><div class="actions"><a class="button coral" href="#pause">Review PAUSE</a><a class="button light" href="prompt_injection_healthcare_brief.md">Read the full evidence article</a><a class="button light" href="prompt_injection_references.md">Open the references</a></div></div></section>
+<section class="section author"><div class="reading"><div class="author-card"><span>RP</span><div><h2>About the author</h2><p><b>Ram Paragi</b> is Director of Strategic Outcomes and Accreditation at LSU Health New Orleans School of Medicine. His independent work focuses on healthcare AI evaluation, governance, implementation, faculty development, and institutional decision support.</p></div></div><p class="note">This independent educational resource does not represent institutional policy or endorsement. Follow current privacy, cybersecurity, acceptable-use, clinical-documentation, and AI requirements at the institution and clinical site where you work.</p></div></section>
+</main>
+<footer><div class="wrap"><b>Medical AI Resource Hub</b><a href="../">Return to all resources</a></div></footer>
+<script src="script.js"></script>
+</body>
+</html>

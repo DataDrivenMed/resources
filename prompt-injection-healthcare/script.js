@@ -1,1 +1,44 @@
-(()=>{const bar=document.getElementById('progress');const progress=()=>{const d=document.documentElement,m=d.scrollHeight-innerHeight;bar.style.width=(m?scrollY/m*100:0)+'%'};addEventListener('scroll',progress,{passive:true});progress();const menu=document.getElementById('menu'),nav=document.getElementById('nav');menu.addEventListener('click',()=>{const open=nav.classList.toggle('open');menu.setAttribute('aria-expanded',open)});nav.addEventListener('click',e=>{if(e.target.tagName==='A'){nav.classList.remove('open');menu.setAttribute('aria-expanded','false')}});const reduced=matchMedia('(prefers-reduced-motion:reduce)').matches;const reveal=[...document.querySelectorAll('.section>*,.cards a,.harm-grid article,.example-grid article,.pause-grid article,.response-grid article')];reveal.forEach(x=>x.classList.add('reveal'));if(reduced||!('IntersectionObserver'in window))reveal.forEach(x=>x.classList.add('visible'));else{const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}}),{threshold:.08,rootMargin:'0px 0px -7%'});reveal.forEach(x=>io.observe(x))}const flow=document.getElementById('flow'),steps=[...document.querySelectorAll('.steps article')];if(flow&&'IntersectionObserver'in window&&!reduced){const io=new IntersectionObserver(es=>{const v=es.filter(e=>e.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];if(!v)return;flow.dataset.stage=v.target.dataset.stage;steps.forEach(x=>x.classList.toggle('active',x===v.target))},{threshold:[.3,.55],rootMargin:'-15% 0px -35%'});steps.forEach(x=>io.observe(x))}const links=[...nav.querySelectorAll('a')],targets=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);if('IntersectionObserver'in window){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id))}),{rootMargin:'-22% 0px -68%'});targets.forEach(x=>io.observe(x))}})();
+(() => {
+  const progress = document.querySelector('.reading-progress span');
+  const navToggle = document.querySelector('.nav-toggle');
+  const nav = document.querySelector('.site-nav');
+  const printButton = document.querySelector('.print-button');
+  const tocLinks = [...document.querySelectorAll('.desktop-toc a')];
+
+  const updateProgress = () => {
+    const height = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = height > 0 ? Math.min(100, Math.max(0, (window.scrollY / height) * 100)) : 0;
+    if (progress) progress.style.width = `${pct}%`;
+  };
+
+  navToggle?.addEventListener('click', () => {
+    const open = navToggle.getAttribute('aria-expanded') === 'true';
+    navToggle.setAttribute('aria-expanded', String(!open));
+    nav?.classList.toggle('is-open', !open);
+  });
+
+  nav?.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+    nav?.classList.remove('is-open');
+    navToggle?.setAttribute('aria-expanded', 'false');
+  }));
+
+  printButton?.addEventListener('click', () => window.print());
+
+  const sections = tocLinks
+    .map(link => document.querySelector(link.getAttribute('href')))
+    .filter(Boolean);
+  const observer = new IntersectionObserver(entries => {
+    const visible = entries.filter(e => e.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+    if (!visible) return;
+    tocLinks.forEach(link => {
+      const active = link.getAttribute('href') === `#${visible.target.id}`;
+      if (active) link.setAttribute('aria-current', 'true');
+      else link.removeAttribute('aria-current');
+    });
+  }, { rootMargin: '-20% 0px -65% 0px', threshold: [0, .25, .5] });
+  sections.forEach(section => observer.observe(section));
+
+  updateProgress();
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  window.addEventListener('resize', updateProgress);
+})();

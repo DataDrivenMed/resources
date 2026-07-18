@@ -1,3 +1,4 @@
+
 (() => {
   const progress = document.querySelector('.reading-progress span');
   const navToggle = document.querySelector('.nav-toggle');

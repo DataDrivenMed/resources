@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="500" viewBox="0 0 1200 500" role="img" aria-labelledby="title desc">
+<title id="title">Direct versus indirect prompt injection</title><desc id="desc">Direct injection comes from the chat user; indirect injection arrives within content the AI processes.</desc>
+<rect width="1200" height="500" rx="28" fill="#FFFFFF"/>
+<text x="60" y="65" font-family="Arial" font-size="26" font-weight="700" fill="#071827">Direct versus indirect prompt injection</text>
+<rect x="55" y="105" width="520" height="350" rx="25" fill="#E9F7F6" stroke="#18B7B2" stroke-width="3"/>
+<circle cx="130" cy="175" r="36" fill="#18B7B2"/><path d="M113 175h34M130 158v34" stroke="#071827" stroke-width="5" stroke-linecap="round"/>
+<text x="190" y="167" font-family="Arial" font-size="26" font-weight="700" fill="#071827">Direct</text><text x="190" y="199" font-family="Arial" font-size="16" fill="#607487">Entered by the person in the AI conversation</text>
+<rect x="95" y="245" width="440" height="90" rx="16" fill="#FFFFFF"/><text x="120" y="282" font-family="Arial" font-size="17" font-weight="700" fill="#152637">Source</text><text x="120" y="312" font-family="Arial" font-size="16" fill="#607487">The chat message itself</text>
+<text x="95" y="385" font-family="Arial" font-size="17" fill="#152637">The user can usually see the instruction.</text>
+<rect x="625" y="105" width="520" height="350" rx="25" fill="#FFF4E2" stroke="#F3B84B" stroke-width="3"/>
+<rect x="690" y="140" width="72" height="82" rx="10" fill="#FFFFFF" stroke="#F3B84B" stroke-width="3"/><path d="M706 164h40M706 181h40M706 198h30" stroke="#607487" stroke-width="4" stroke-linecap="round"/>
+<text x="800" y="167" font-family="Arial" font-size="26" font-weight="700" fill="#071827">Indirect</text><text x="800" y="199" font-family="Arial" font-size="16" fill="#607487">Carried inside content the AI is asked to process</text>
+<rect x="665" y="245" width="440" height="90" rx="16" fill="#FFFFFF"/><text x="690" y="282" font-family="Arial" font-size="17" font-weight="700" fill="#152637">Source</text><text x="690" y="312" font-family="Arial" font-size="16" fill="#607487">PDF, email, webpage, image, message, record</text>
+<text x="665" y="385" font-family="Arial" font-size="17" fill="#152637">The user may never notice the instruction.</text>
+</svg>

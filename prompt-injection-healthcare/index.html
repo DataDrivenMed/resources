@@ -436,10 +436,12 @@ behavior. Information may also leave control because a user enters it
 into an unsuitable service, an agent retrieves too much, content is
 retained under applicable terms, or workflows become difficult to
 move.</p><p>This is a different risk from prompt injection, and the two are
-easy to mix up. Prompt injection is someone else's hidden instruction
-hijacking a task. The risks below happen because your own institution's
-confidential information ends up outside institutional control, based
-on where it was typed or processed &mdash; not because anyone hid an
+easy to mix up. When prompt injection causes exposure, it is because an
+AI with broad access gets tricked into retrieving or sending something
+it should not &mdash; the Level 2 and Level 3 escalation described
+above. The risks below are different: your own institution's
+confidential information ends up outside institutional control based
+on where it was typed or processed, not because anyone hid an
 instruction anywhere. The second kind does not need an attacker: a
 well-meaning faculty member pasting a manuscript or dataset into a
 personal AI account is enough.</p><p>Related risks need different safeguards:</p><ul>
@@ -453,12 +455,12 @@ authorization controls.</li>
 access control, and contractual protection.</li>
 <li><strong>Vendor dependency:</strong> portability, export rights,
 model choice, and institution-controlled evaluations and memory.</li>
-</ul><p>A widely reported 2023 case illustrates the voluntary-disclosure
-risk without any attacker involved: engineers at a major technology
-company pasted proprietary source code and internal meeting notes into
-a public AI chatbot to speed up routine tasks, and the company banned
-the tool company-wide once it recognized the data could be retained
-under the vendor's terms at the time.<sup class="citation">[<a aria-label="Reference 32" href="#ref-32">32</a>]</sup></p><p>Zero data retention is one of these controls, not a complete answer;
+</ul><p>A widely reported case from spring 2023 illustrates the
+voluntary-disclosure risk without any attacker involved: Samsung
+engineers pasted proprietary semiconductor source code and internal
+meeting notes into ChatGPT to get help with routine tasks, and the
+company banned the tool company-wide once it recognized the data could
+be retained under the vendor's terms at the time.<sup class="citation">[<a aria-label="Reference 32" href="#ref-32">32</a>]</sup></p><p>Zero data retention is one of these controls, not a complete answer;
 see below for what it does and does not cover.</p></section><section class="content-section executive-sidebar" id="beyond-data-privacy-who-owns-the-institution-s-learning"><h2 tabindex="-1">Beyond data privacy: who owns the institution's learning?</h2><p>These risks compound with a broader question: who controls what the
 institution learns from using AI at all.</p><p>An institution's valuable knowledge is not limited to documents and
 databases. It may be encoded in prompts, corrections, accepted and

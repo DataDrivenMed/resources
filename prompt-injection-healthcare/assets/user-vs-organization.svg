@@ -1,1 +1,101 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 310" role="img" aria-label="User Vs Organization"><rect width="1200" height="310" fill="#f4f8fb"/><text x="45" y="52" font-family="Georgia" font-size="30" font-weight="700" fill="#071827">User Vs Organization</text><rect x="45" y="95" width="245" height="120" rx="18" fill="#ffffff" stroke="#94aabd"/><text x="167.5" y="148" text-anchor="middle" font-family="Arial" font-size="19" font-weight="700" fill="#10283b">User: verify source and output</text><text x="167.5" y="178" text-anchor="middle" font-family="Arial" font-size="13" fill="#5d7183">Step 1</text><path d="M290 155 H323" stroke="#2d7cae" stroke-width="4"/><path d="M323 155 l-10 -7 v14z" fill="#2d7cae"/><rect x="330" y="95" width="245" height="120" rx="18" fill="#ffffff" stroke="#94aabd"/><text x="452.5" y="148" text-anchor="middle" font-family="Arial" font-size="19" font-weight="700" fill="#10283b">Organization: constrain access and tools</text><text x="452.5" y="178" text-anchor="middle" font-family="Arial" font-size="13" fill="#5d7183">Step 2</text><path d="M575 155 H608" stroke="#2d7cae" stroke-width="4"/><path d="M608 155 l-10 -7 v14z" fill="#2d7cae"/><rect x="615" y="95" width="245" height="120" rx="18" fill="#ffffff" stroke="#94aabd"/><text x="737.5" y="148" text-anchor="middle" font-family="Arial" font-size="19" font-weight="700" fill="#10283b">Shared: report anomalies</text><text x="737.5" y="178" text-anchor="middle" font-family="Arial" font-size="13" fill="#5d7183">Step 3</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1200 310"
+     role="img"
+     aria-labelledby="uvo-title uvo-desc">
+
+  <title id="uvo-title">User and Organization Responsibilities</title>
+  <desc id="uvo-desc">
+    Users verify sources and outputs, organizations constrain access
+    and tools, and both report suspicious behavior.
+  </desc>
+
+  <rect width="1200" height="310" fill="#f4f8fb"/>
+
+  <text x="45" y="52"
+        font-family="Georgia, serif"
+        font-size="30"
+        font-weight="700"
+        fill="#071827">
+    User vs. Organization
+  </text>
+
+  <!-- User responsibility -->
+  <rect x="45" y="95" width="320" height="120" rx="18"
+        fill="#ffffff" stroke="#94aabd"/>
+
+  <text x="205" y="137"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="18"
+        font-weight="700"
+        fill="#10283b">
+    <tspan x="205" dy="0">User responsibility</tspan>
+    <tspan x="205" dy="24">Verify the source and output</tspan>
+  </text>
+
+  <text x="205" y="190"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="13"
+        fill="#5d7183">
+    Individual safeguard
+  </text>
+
+  <path d="M365 155 H405"
+        stroke="#2d7cae"
+        stroke-width="4"/>
+
+  <path d="M405 155 l-10 -7 v14z"
+        fill="#2d7cae"/>
+
+  <!-- Organization responsibility -->
+  <rect x="415" y="95" width="360" height="120" rx="18"
+        fill="#ffffff" stroke="#94aabd"/>
+
+  <text x="595" y="137"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="18"
+        font-weight="700"
+        fill="#10283b">
+    <tspan x="595" dy="0">Organization responsibility</tspan>
+    <tspan x="595" dy="24">Constrain access, tools, and actions</tspan>
+  </text>
+
+  <text x="595" y="190"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="13"
+        fill="#5d7183">
+    System safeguard
+  </text>
+
+  <path d="M775 155 H815"
+        stroke="#2d7cae"
+        stroke-width="4"/>
+
+  <path d="M815 155 l-10 -7 v14z"
+        fill="#2d7cae"/>
+
+  <!-- Shared responsibility -->
+  <rect x="825" y="95" width="330" height="120" rx="18"
+        fill="#ffffff" stroke="#94aabd"/>
+
+  <text x="990" y="137"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="18"
+        font-weight="700"
+        fill="#10283b">
+    <tspan x="990" dy="0">Shared responsibility</tspan>
+    <tspan x="990" dy="24">Stop and report anomalies</tspan>
+  </text>
+
+  <text x="990" y="190"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="13"
+        fill="#5d7183">
+    Coordinated response
+  </text>
+</svg>

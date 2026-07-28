@@ -1,1 +1,115 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 310" role="img" aria-label="Pause Framework"><rect width="1200" height="310" fill="#f4f8fb"/><text x="45" y="52" font-family="Georgia" font-size="30" font-weight="700" fill="#071827">Pause Framework</text><rect x="45" y="95" width="245" height="120" rx="18" fill="#ffffff" stroke="#94aabd"/><text x="167.5" y="148" text-anchor="middle" font-family="Arial" font-size="19" font-weight="700" fill="#10283b">P Permissions</text><text x="167.5" y="178" text-anchor="middle" font-family="Arial" font-size="13" fill="#5d7183">Step 1</text><path d="M290 155 H323" stroke="#2d7cae" stroke-width="4"/><path d="M323 155 l-10 -7 v14z" fill="#2d7cae"/><rect x="330" y="95" width="245" height="120" rx="18" fill="#ffffff" stroke="#94aabd"/><text x="452.5" y="148" text-anchor="middle" font-family="Arial" font-size="19" font-weight="700" fill="#10283b">A Approved tool</text><text x="452.5" y="178" text-anchor="middle" font-family="Arial" font-size="13" fill="#5d7183">Step 2</text><path d="M575 155 H608" stroke="#2d7cae" stroke-width="4"/><path d="M608 155 l-10 -7 v14z" fill="#2d7cae"/><rect x="615" y="95" width="245" height="120" rx="18" fill="#ffffff" stroke="#94aabd"/><text x="737.5" y="148" text-anchor="middle" font-family="Arial" font-size="19" font-weight="700" fill="#10283b">U Untrusted content</text><text x="737.5" y="178" text-anchor="middle" font-family="Arial" font-size="13" fill="#5d7183">Step 3</text><path d="M860 155 H893" stroke="#2d7cae" stroke-width="4"/><path d="M893 155 l-10 -7 v14z" fill="#2d7cae"/><rect x="900" y="95" width="245" height="120" rx="18" fill="#ffffff" stroke="#94aabd"/><text x="1022.5" y="148" text-anchor="middle" font-family="Arial" font-size="19" font-weight="700" fill="#10283b">S Sensitive data · E External action</text><text x="1022.5" y="178" text-anchor="middle" font-family="Arial" font-size="13" fill="#5d7183">Step 4</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1200 310"
+     role="img"
+     aria-labelledby="pause-title pause-desc">
+
+  <title id="pause-title">PAUSE Framework</title>
+  <desc id="pause-desc">
+    Four-step framework covering permissions, approved tools,
+    untrusted content, sensitive information, and external action.
+  </desc>
+
+  <rect width="1200" height="310" fill="#f4f8fb"/>
+
+  <text x="45" y="52"
+        font-family="Georgia, serif"
+        font-size="30"
+        font-weight="700"
+        fill="#071827">
+    PAUSE Framework
+  </text>
+
+  <!-- Box 1 -->
+  <rect x="45" y="95" width="245" height="120" rx="18"
+        fill="#ffffff" stroke="#94aabd"/>
+
+  <text x="167.5" y="145"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="18"
+        font-weight="700"
+        fill="#10283b">
+    P · Permissions
+  </text>
+
+  <text x="167.5" y="178"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="13"
+        fill="#5d7183">
+    Step 1
+  </text>
+
+  <path d="M290 155 H323" stroke="#2d7cae" stroke-width="4"/>
+  <path d="M323 155 l-10 -7 v14z" fill="#2d7cae"/>
+
+  <!-- Box 2 -->
+  <rect x="330" y="95" width="245" height="120" rx="18"
+        fill="#ffffff" stroke="#94aabd"/>
+
+  <text x="452.5" y="145"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="18"
+        font-weight="700"
+        fill="#10283b">
+    A · Approved tool
+  </text>
+
+  <text x="452.5" y="178"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="13"
+        fill="#5d7183">
+    Step 2
+  </text>
+
+  <path d="M575 155 H608" stroke="#2d7cae" stroke-width="4"/>
+  <path d="M608 155 l-10 -7 v14z" fill="#2d7cae"/>
+
+  <!-- Box 3 -->
+  <rect x="615" y="95" width="245" height="120" rx="18"
+        fill="#ffffff" stroke="#94aabd"/>
+
+  <text x="737.5" y="145"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="18"
+        font-weight="700"
+        fill="#10283b">
+    U · Untrusted content
+  </text>
+
+  <text x="737.5" y="178"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="13"
+        fill="#5d7183">
+    Step 3
+  </text>
+
+  <path d="M860 155 H893" stroke="#2d7cae" stroke-width="4"/>
+  <path d="M893 155 l-10 -7 v14z" fill="#2d7cae"/>
+
+  <!-- Box 4 -->
+  <rect x="900" y="95" width="245" height="120" rx="18"
+        fill="#ffffff" stroke="#94aabd"/>
+
+  <text x="1022.5" y="135"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="17"
+        font-weight="700"
+        fill="#10283b">
+    <tspan x="1022.5" dy="0">S · Sensitive information</tspan>
+    <tspan x="1022.5" dy="24">E · External action</tspan>
+  </text>
+
+  <text x="1022.5" y="192"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="13"
+        fill="#5d7183">
+    Step 4
+  </text>
+</svg>

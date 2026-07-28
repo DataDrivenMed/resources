@@ -1,1 +1,94 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 310" role="img" aria-label="Direct Vs Indirect"><rect width="1200" height="310" fill="#f4f8fb"/><text x="45" y="52" font-family="Georgia" font-size="30" font-weight="700" fill="#071827">Direct Vs Indirect</text><rect x="45" y="95" width="245" height="120" rx="18" fill="#ffffff" stroke="#94aabd"/><text x="167.5" y="148" text-anchor="middle" font-family="Arial" font-size="19" font-weight="700" fill="#10283b">Direct: user enters instruction</text><text x="167.5" y="178" text-anchor="middle" font-family="Arial" font-size="13" fill="#5d7183">Step 1</text><path d="M290 155 H323" stroke="#2d7cae" stroke-width="4"/><path d="M323 155 l-10 -7 v14z" fill="#2d7cae"/><rect x="330" y="95" width="245" height="120" rx="18" fill="#ffffff" stroke="#94aabd"/><text x="452.5" y="148" text-anchor="middle" font-family="Arial" font-size="19" font-weight="700" fill="#10283b">Indirect: instruction arrives inside content</text><text x="452.5" y="178" text-anchor="middle" font-family="Arial" font-size="13" fill="#5d7183">Step 2</text><path d="M575 155 H608" stroke="#2d7cae" stroke-width="4"/><path d="M608 155 l-10 -7 v14z" fill="#2d7cae"/><rect x="615" y="95" width="245" height="120" rx="18" fill="#ffffff" stroke="#94aabd"/><text x="737.5" y="148" text-anchor="middle" font-family="Arial" font-size="19" font-weight="700" fill="#10283b">AI must separate instructions from data</text><text x="737.5" y="178" text-anchor="middle" font-family="Arial" font-size="13" fill="#5d7183">Step 3</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1200 310"
+     role="img"
+     aria-labelledby="direct-title direct-desc">
+
+  <title id="direct-title">Direct and Indirect Prompt Injection</title>
+  <desc id="direct-desc">
+    Comparison of direct instructions entered by a user,
+    indirect instructions embedded in outside content,
+    and the AI system's need to distinguish instructions from data.
+  </desc>
+
+  <rect width="1200" height="310" fill="#f4f8fb"/>
+
+  <text x="45" y="52"
+        font-family="Georgia, serif"
+        font-size="30"
+        font-weight="700"
+        fill="#071827">
+    Direct vs. Indirect
+  </text>
+
+  <!-- Box 1 -->
+  <rect x="45" y="95" width="320" height="120" rx="18"
+        fill="#ffffff" stroke="#94aabd"/>
+
+  <text x="205" y="137"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="18"
+        font-weight="700"
+        fill="#10283b">
+    <tspan x="205" dy="0">Direct injection</tspan>
+    <tspan x="205" dy="24">User enters the instruction</tspan>
+  </text>
+
+  <text x="205" y="190"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="13"
+        fill="#5d7183">
+    Step 1
+  </text>
+
+  <path d="M365 155 H405" stroke="#2d7cae" stroke-width="4"/>
+  <path d="M405 155 l-10 -7 v14z" fill="#2d7cae"/>
+
+  <!-- Box 2 -->
+  <rect x="415" y="95" width="320" height="120" rx="18"
+        fill="#ffffff" stroke="#94aabd"/>
+
+  <text x="575" y="137"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="18"
+        font-weight="700"
+        fill="#10283b">
+    <tspan x="575" dy="0">Indirect injection</tspan>
+    <tspan x="575" dy="24">Instruction arrives inside content</tspan>
+  </text>
+
+  <text x="575" y="190"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="13"
+        fill="#5d7183">
+    Step 2
+  </text>
+
+  <path d="M735 155 H775" stroke="#2d7cae" stroke-width="4"/>
+  <path d="M775 155 l-10 -7 v14z" fill="#2d7cae"/>
+
+  <!-- Box 3 -->
+  <rect x="785" y="95" width="370" height="120" rx="18"
+        fill="#ffffff" stroke="#94aabd"/>
+
+  <text x="970" y="137"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="18"
+        font-weight="700"
+        fill="#10283b">
+    <tspan x="970" dy="0">The AI must distinguish</tspan>
+    <tspan x="970" dy="24">authorized instructions from data</tspan>
+  </text>
+
+  <text x="970" y="190"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="13"
+        fill="#5d7183">
+    Step 3
+  </text>
+</svg>

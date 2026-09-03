@@ -26,43 +26,51 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+
+  <!-- GOOGLE ANALYTICS 4
+       Paste the complete Google tag (gtag.js) from Google Analytics immediately below this comment.
+       The engagement events in this page will begin sending automatically once gtag.js is present.
+  -->
 </head>
 <body>
   <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
-  <header class="masthead">
-    <div class="masthead-inner">
-      <div class="brandline"><span class="brand-name">Ram Paragi</span><span class="brand-sep">|</span><a class="brand-resource" href="https://datadrivenmed.github.io/resources/">AI Resources</a></div>
-      <div class="masthead-actions">
-        <button class="icon-btn" type="button" id="printTop">Print</button>
-        <button class="icon-btn" type="button" id="copyTop">Copy link</button>
-      </div>
+  <header class="topbar">
+    <div class="shell topbar-inner">
+      <a class="brand" href="https://datadrivenmed.github.io/resources/">Ram Paragi | AI Resources</a>
+      <nav class="nav" aria-label="Article navigation">
+        <a href="#release">What changed</a>
+        <a href="#how-it-works">How it works</a>
+        <a href="#read-only">Read-only risk</a>
+        <a href="#hipaa">HIPAA + BAA</a>
+        <a href="#evidence">Evidence</a>
+        <a href="#human-loop">Oversight</a>
+        <a href="#lsu-health">LSU Health</a>
+        <a href="#sources">Sources</a>
+      </nav>
     </div>
   </header>
 <main id="top">
-    <header class="hero">
-      <div class="eyebrow">Clinical AI Analysis</div>
-      <h1>ChatGPT can now connect to Epic. The connection matters more than the chatbot.</h1>
-      <div class="deck">What FHIR, OAuth, read-only access, HIPAA and the BAA mean for LSU Health New Orleans clinicians</div>
-      <div class="byline">
-        <span><strong>Ram Paragi</strong> <span class="byline-sep">|</span> <a href="https://datadrivenmed.github.io/resources/">AI Resources</a></span>
-        <span>September 2026</span>
-        <span>8 min read</span>
-      </div>
-      <div class="share-strip" aria-label="Share article">
-        <a id="linkedinShare" href="#" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        <a id="emailShare" href="#">Email</a>
-        <button type="button" id="copyShare">Copy link</button>
-        <button type="button" id="printShare">Print</button>
-      </div>
-      <div class="copy-status" id="copyStatus" aria-live="polite"></div>
-    </header>
-<section class="clinician-summary" aria-label="Article takeaway">
-      <div class="clinician-summary-inner">
-        <div class="summary-label">The takeaway</div>
-        <p>The important change is not that ChatGPT can answer medical questions. It is that a general-purpose AI platform can now retrieve authorized patient-specific context from an EHR.</p>
+    <section class="article-hero">
+      <div class="shell">
+        <div class="eyebrow">Clinical AI analysis for medical faculty</div>
+        <h1>ChatGPT can now connect to Epic</h1>
+        <p class="hero-subhead">The connection matters more than the chatbot.</p>
+        <p class="hero-deck">What FHIR, OAuth, read-only access, HIPAA and the BAA mean for LSU Health New Orleans clinicians</p>
+        <div class="meta">
+          <span><strong>Ram Paragi</strong> · <a href="https://datadrivenmed.github.io/resources/">AI Resources</a></span>
+          <span>September 2026</span>
+          <span>8 min read</span>
+        </div>
       </div>
     </section>
-<article class="article-shell">
+<section class="shell intro-note-wrap">
+      <div class="intro-note">
+        <strong>What changed</strong>
+        The important development is not that ChatGPT can answer medical questions. It is that an approved organizational deployment can retrieve authorized patient-specific context from Epic.
+      </div>
+    </section>
+<section class="shell article-layout">
+    <article class="article">
       <p>Few days back, OpenAI added a new capability to ChatGPT for Healthcare: approved healthcare organizations can connect their Epic environment so that ChatGPT can retrieve patient information a clinician is already authorized to see. OpenAI also released a separate Healthcare Public Data plugin for sources such as PubMed, ClinicalTrials.gov, DailyMed, RxNorm, openFDA and CMS data. (<a class="source-link" href="https://openai.com/index/chatgpt-connects-health-records-and-healthcare-sources/" target="_blank" rel="noopener noreferrer">OpenAI</a>)</p>
 <p class="lede-line">The news is easy to summarize as &quot;ChatGPT can now read Epic.&quot;</p>
 <p class="lede-counter">The actual development is more specific.</p>
@@ -75,6 +83,21 @@
 <p class="opening-question">&quot;What is configured, approved, validated and appropriate where I am practicing?&quot;</p>
 <p>They are different questions.</p>
 
+<nav class="contents" aria-label="Article contents">
+  <div class="contents-kicker">CONTENTS</div>
+  <ol>
+    <li><a href="#what-openai-released">What OpenAI released</a></li>
+    <li><a href="#how-it-works">How the Epic connection works</a></li>
+    <li><a href="#read-only">Why read-only is not clinically passive</a></li>
+    <li><a href="#hipaa-baa">HIPAA, the BAA, and PHI boundaries</a></li>
+    <li><a href="#demonstrated">What has actually been demonstrated</a></li>
+    <li><a href="#where-help">Where this may help</a></li>
+    <li><a href="#other-clinical-ai">How it compares with other clinical AI</a></li>
+    <li><a href="#lsu-health">What this means at LSU Health New Orleans</a></li>
+    <li><a href="#practical-test">A practical clinical workflow test</a></li>
+    <li><a href="#takeaway">What clinicians should take away</a></li>
+  </ol>
+</nav>
 <h2 id="what-openai-released">What exactly did OpenAI release?</h2>
 <p>OpenAI now has several healthcare offerings that are easy to confuse.</p>
 <p>ChatGPT for Healthcare is the enterprise product intended for healthcare organizations. ChatGPT for Clinicians is available to eligible verified U.S. clinicians. Health in ChatGPT is patient-facing.</p>
@@ -144,7 +167,6 @@
 <p>OpenAI currently describes ChatGPT for Healthcare as using its latest healthcare-optimized models rather than permanently tying the Epic connection to one fixed model. (<a class="source-link" href="https://help.openai.com/en/articles/20001046" target="_blank" rel="noopener noreferrer">OpenAI Help Center</a>)</p>
 <p class="argument-line">That matters for clinical validation.</p>
 <p>A health system could test a workflow using one model configuration and later encounter a changed model. For consequential uses, model changes should be treated as part of ongoing performance monitoring rather than as invisible software updates.</p>
-<div class="section-kicker">Clinical workflow</div>
 <h2 id="read-only">Read-only is safer. It is not clinically passive.</h2>
 
 <figure class="figure figure-wide" id="figure-1">
@@ -254,7 +276,6 @@
 <p>For some use cases, that may be exactly the right safety boundary.</p>
 <p>For others, a narrower product integrated more deeply into the workflow may be more useful.</p>
 <p class="argument-line">The most capable underlying model is not automatically the best clinical product. Workflow matters.</p>
-<div class="section-kicker">Local implications</div>
 <h2 id="lsu-health">What this means at LSU Health New Orleans</h2>
 <p>LSU Health faculty practice, teach, supervise trainees and participate in clinical programs across multiple independent healthcare organizations.</p>
 <p>That makes the local implementation question especially important.</p>
@@ -295,6 +316,26 @@
 <ol class="source-list"><li><a href="https://openai.com/index/chatgpt-connects-health-records-and-healthcare-sources/" target="_blank" rel="noopener noreferrer">OpenAI: Healthcare organizations can now connect EHR and additional industry data to ChatGPT</a></li><li><a href="https://help.openai.com/en/articles/20001490" target="_blank" rel="noopener noreferrer">OpenAI Help Center: Using the Epic plugin with ChatGPT and Codex</a></li><li><a href="https://help.openai.com/en/articles/20001046" target="_blank" rel="noopener noreferrer">OpenAI Help Center: ChatGPT for Healthcare</a></li><li><a href="https://help.openai.com/en/articles/20001069" target="_blank" rel="noopener noreferrer">OpenAI Help Center: HIPAA eligible products and functionality</a></li><li><a href="https://help.openai.com/en/articles/20001489" target="_blank" rel="noopener noreferrer">OpenAI Help Center: Using Healthcare Public Data in ChatGPT and Codex</a></li><li><a href="https://www.hhs.gov/hipaa/for-professionals/covered-entities/sample-business-associate-agreement-provisions/index.html" target="_blank" rel="noopener noreferrer">HHS: Business Associate Contracts</a></li><li><a href="https://www.hhs.gov/hipaa/for-professionals/privacy/guidance/minimum-necessary-requirement/index.html" target="_blank" rel="noopener noreferrer">HHS: Minimum Necessary Requirement</a></li><li><a href="https://www.hl7.org/fhir/smart-app-launch/STU2.2/scopes-and-launch-context.html" target="_blank" rel="noopener noreferrer">HL7: SMART App Launch scopes and launch context</a></li><li><a href="https://fhir.epic.com/Home/Index" target="_blank" rel="noopener noreferrer">Epic: Epic on FHIR documentation</a></li><li><a href="https://www.fda.gov/regulatory-information/search-fda-guidance-documents/clinical-decision-support-software" target="_blank" rel="noopener noreferrer">FDA: Clinical Decision Support Software, final guidance, 2026</a></li></ol>
       <p class="back-top"><a href="#top">Back to top</a></p>
     </article>
+    <aside class="side" aria-label="On this page">
+      <div class="side-box">
+        <strong>On this page</strong>
+        <a href="#release">What changed</a>
+        <a href="#how-it-works">How it works</a>
+        <a href="#read-only">Read-only risk</a>
+        <a href="#hipaa">HIPAA + BAA</a>
+        <a href="#evidence">Evidence + use cases</a>
+        <a href="#human-loop">Human oversight</a>
+        <a href="#lsu-health">LSU Health</a>
+        <a href="#sources">Sources</a>
+      </div>
+      <div class="side-box">
+        <strong>Audience</strong>
+        <span>Clinical faculty</span>
+        <span>Residents + fellows</span>
+        <span>Academic health leaders</span>
+      </div>
+    </aside>
+  </section>
   </main>
 
   <footer class="footer">

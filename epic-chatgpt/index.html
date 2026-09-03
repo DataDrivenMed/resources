@@ -24,34 +24,27 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Playfair+Display:wght@400;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-
-  <!-- GOOGLE ANALYTICS 4
-       Paste the complete Google tag (gtag.js) from Google Analytics immediately below this comment.
-       The engagement events in this page will begin sending automatically once gtag.js is present.
-  -->
 </head>
 <body>
   <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
   <header class="masthead">
     <div class="masthead-inner">
-      <a class="brand" href="https://datadrivenmed.github.io/resources/" aria-label="Ram Paragi AI Resources">Ram Paragi / AI Resources</a>
-      <div class="masthead-section">Clinical AI Analysis</div>
+      <div class="brandline"><span class="brand-name">Ram Paragi</span><span class="brand-sep">|</span><a class="brand-resource" href="https://datadrivenmed.github.io/resources/">AI Resources</a></div>
       <div class="masthead-actions">
         <button class="icon-btn" type="button" id="printTop">Print</button>
         <button class="icon-btn" type="button" id="copyTop">Copy link</button>
       </div>
     </div>
   </header>
-
-  <main id="top">
+<main id="top">
     <header class="hero">
-      <div class="eyebrow">CLINICAL AI ANALYSIS · EHR INTEROPERABILITY · FACULTY</div>
+      <div class="eyebrow">Clinical AI Analysis</div>
       <h1>ChatGPT can now connect to Epic. The connection matters more than the chatbot.</h1>
       <div class="deck">What FHIR, OAuth, read-only access, HIPAA and the BAA mean for LSU Health New Orleans clinicians</div>
       <div class="byline">
-        <span>By <strong>Ram Paragi</strong></span>
+        <span><strong>Ram Paragi</strong> <span class="byline-sep">|</span> <a href="https://datadrivenmed.github.io/resources/">AI Resources</a></span>
         <span>September 2026</span>
         <span>8 min read</span>
       </div>
@@ -63,21 +56,13 @@
       </div>
       <div class="copy-status" id="copyStatus" aria-live="polite"></div>
     </header>
-
-    <section class="clinician-summary" aria-labelledby="for-clinicians-title">
+<section class="clinician-summary" aria-label="Article takeaway">
       <div class="clinician-summary-inner">
-        <h2 id="for-clinicians-title">For clinicians</h2>
-        <ul>
-          <li>Epic connectivity is an organizational capability, not an individual ChatGPT feature.</li>
-          <li>FHIR can standardize access to authorized clinical data; it does not establish that the underlying data are correct or complete.</li>
-          <li>Read-only limits execution, but an AI-generated synthesis can still influence clinical judgment.</li>
-          <li>A BAA does not automatically authorize every product, feature, external service, or PHI pathway.</li>
-          <li>Local configuration, permissions, workflow approval, validation, and ongoing monitoring still matter.</li>
-        </ul>
+        <div class="summary-label">The takeaway</div>
+        <p>The important change is not that ChatGPT can answer medical questions. It is that a general-purpose AI platform can now retrieve authorized patient-specific context from an EHR.</p>
       </div>
     </section>
-
-    <article class="article-shell">
+<article class="article-shell">
       <p>Few days back, OpenAI added a new capability to ChatGPT for Healthcare: approved healthcare organizations can connect their Epic environment so that ChatGPT can retrieve patient information a clinician is already authorized to see. OpenAI also released a separate Healthcare Public Data plugin for sources such as PubMed, ClinicalTrials.gov, DailyMed, RxNorm, openFDA and CMS data. (<a class="source-link" href="https://openai.com/index/chatgpt-connects-health-records-and-healthcare-sources/" target="_blank" rel="noopener noreferrer">OpenAI</a>)</p>
 <p class="lede-line">The news is easy to summarize as &quot;ChatGPT can now read Epic.&quot;</p>
 <p class="lede-counter">The actual development is more specific.</p>
@@ -90,21 +75,6 @@
 <p class="opening-question">&quot;What is configured, approved, validated and appropriate where I am practicing?&quot;</p>
 <p>They are different questions.</p>
 
-<nav class="contents" aria-label="Article contents">
-  <div class="contents-kicker">CONTENTS</div>
-  <ol>
-    <li><a href="#what-openai-released">What OpenAI released</a></li>
-    <li><a href="#how-it-works">How the Epic connection works</a></li>
-    <li><a href="#read-only">Why read-only is not clinically passive</a></li>
-    <li><a href="#hipaa-baa">HIPAA, the BAA, and PHI boundaries</a></li>
-    <li><a href="#demonstrated">What has actually been demonstrated</a></li>
-    <li><a href="#where-help">Where this may help</a></li>
-    <li><a href="#other-clinical-ai">How it compares with other clinical AI</a></li>
-    <li><a href="#lsu-health">What this means at LSU Health New Orleans</a></li>
-    <li><a href="#practical-test">A practical clinical workflow test</a></li>
-    <li><a href="#takeaway">What clinicians should take away</a></li>
-  </ol>
-</nav>
 <h2 id="what-openai-released">What exactly did OpenAI release?</h2>
 <p>OpenAI now has several healthcare offerings that are easy to confuse.</p>
 <p>ChatGPT for Healthcare is the enterprise product intended for healthcare organizations. ChatGPT for Clinicians is available to eligible verified U.S. clinicians. Health in ChatGPT is patient-facing.</p>
@@ -174,6 +144,7 @@
 <p>OpenAI currently describes ChatGPT for Healthcare as using its latest healthcare-optimized models rather than permanently tying the Epic connection to one fixed model. (<a class="source-link" href="https://help.openai.com/en/articles/20001046" target="_blank" rel="noopener noreferrer">OpenAI Help Center</a>)</p>
 <p class="argument-line">That matters for clinical validation.</p>
 <p>A health system could test a workflow using one model configuration and later encounter a changed model. For consequential uses, model changes should be treated as part of ongoing performance monitoring rather than as invisible software updates.</p>
+<div class="section-kicker">Clinical workflow</div>
 <h2 id="read-only">Read-only is safer. It is not clinically passive.</h2>
 
 <figure class="figure figure-wide" id="figure-1">
@@ -283,6 +254,7 @@
 <p>For some use cases, that may be exactly the right safety boundary.</p>
 <p>For others, a narrower product integrated more deeply into the workflow may be more useful.</p>
 <p class="argument-line">The most capable underlying model is not automatically the best clinical product. Workflow matters.</p>
+<div class="section-kicker">Local implications</div>
 <h2 id="lsu-health">What this means at LSU Health New Orleans</h2>
 <p>LSU Health faculty practice, teach, supervise trainees and participate in clinical programs across multiple independent healthcare organizations.</p>
 <p>That makes the local implementation question especially important.</p>
@@ -328,7 +300,7 @@
   <footer class="footer">
     <div class="footer-inner">
       <div>
-        <div class="footer-name"><a href="https://datadrivenmed.github.io/resources/">Ram Paragi / AI Resources</a></div>
+        <div class="footer-name"><a href="https://datadrivenmed.github.io/resources/">Ram Paragi | AI Resources</a></div>
         <p>Clinical AI · Health technology · Decision support</p>
         <p class="footer-note">This analysis is provided for educational and informational purposes and does not represent institutional policy or authorization to use any AI product with protected health information. Local deployment, permissions, privacy requirements, workflow approval and clinical validation remain organization-specific.</p>
       </div>
@@ -377,15 +349,15 @@
           status.textContent = activeUrl();
         }
       }
-      document.getElementById('copyTop').addEventListener('click', copyLink);
-      document.getElementById('copyShare').addEventListener('click', copyLink);
-      document.getElementById('printTop').addEventListener('click', () => print());
-      document.getElementById('printShare').addEventListener('click', () => print());
+      document.getElementById('copyTop')?.addEventListener('click', copyLink);
+      document.getElementById('copyShare')?.addEventListener('click', copyLink);
+      document.getElementById('printTop')?.addEventListener('click', () => print());
+      document.getElementById('printShare')?.addEventListener('click', () => print());
 
       const u = encodeURIComponent(activeUrl());
       const t = encodeURIComponent(title);
-      document.getElementById('linkedinShare').href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + u;
-      document.getElementById('emailShare').href = 'mailto:?subject=' + t + '&body=' + encodeURIComponent(title + '\n\n' + activeUrl());
+      if (document.getElementById('linkedinShare')) document.getElementById('linkedinShare').href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + u;
+      if (document.getElementById('emailShare')) document.getElementById('emailShare').href = 'mailto:?subject=' + t + '&body=' + encodeURIComponent(title + '\n\n' + activeUrl());
 
       document.querySelectorAll('.contents a').forEach(a => a.addEventListener('click', () => gaEvent('toc_click', {section: a.getAttribute('href')})));
       document.querySelectorAll('.source-link, .source-list a').forEach(a => a.addEventListener('click', () => gaEvent('source_click', {link_text: a.textContent.trim(), link_url: a.href})));

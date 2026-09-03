@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ChatGPT can now connect to Epic | Ram Paragi</title>
+  <meta name="description" content="What FHIR, OAuth, read-only access, HIPAA and the BAA mean for LSU Health New Orleans clinicians.">
+  <meta name="author" content="Ram Paragi">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="canonical" href="https://datadrivenmed.github.io/resources/epic-chatgpt/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="ChatGPT can now connect to Epic. The connection matters more than the chatbot.">
+  <meta property="og:description" content="What FHIR, OAuth, read-only access, HIPAA and the BAA mean for LSU Health New Orleans clinicians.">
+  <meta property="og:url" content="https://datadrivenmed.github.io/resources/epic-chatgpt/">
+  <meta property="og:image" content="https://datadrivenmed.github.io/resources/epic-chatgpt/images/2_read_only_pathway.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Playfair+Display:wght@400;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+  <header class="masthead">
+    <div class="masthead-inner">
+      <a class="brand" href="https://datadrivenmed.github.io/resources/" aria-label="DataDrivenMed resources"></a>
+      <div class="masthead-section">Clinical AI Briefing</div>
+      <div class="masthead-actions">
+        <button class="icon-btn" type="button" id="printTop">Print</button>
+        <button class="icon-btn" type="button" id="copyTop">Copy link</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <header class="hero">
+      <div class="eyebrow">CLINICAL AI · EHR INTEROPERABILITY · FACULTY BRIEFING</div>
+      <h1>ChatGPT can now connect to Epic. The connection matters more than the chatbot.</h1>
+      <div class="deck">What FHIR, OAuth, read-only access, HIPAA and the BAA mean for LSU Health New Orleans clinicians</div>
+      <div class="byline">
+        <span>By <strong>Ram Paragi</strong></span>
+        <span>September 2026</span>
+        <span>8 min read</span>
+      </div>
+      <div class="share-strip" aria-label="Share article">
+        <a id="linkedinShare" href="#" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a id="emailShare" href="#">Email</a>
+        <button type="button" id="copyShare">Copy link</button>
+        <button type="button" id="printShare">Print</button>
+      </div>
+      <div class="copy-status" id="copyStatus" aria-live="polite"></div>
+    </header>
+
+    <article class="article-shell">
+      <p>Few days back, OpenAI added a new capability to ChatGPT for Healthcare: approved healthcare organizations can connect their Epic environment so that ChatGPT can retrieve patient information a clinician is already authorized to see. OpenAI also released a separate Healthcare Public Data plugin for sources such as PubMed, ClinicalTrials.gov, DailyMed, RxNorm, openFDA and CMS data. (<a class="source-link" href="https://openai.com/index/chatgpt-connects-health-records-and-healthcare-sources/" target="_blank" rel="noopener noreferrer">OpenAI</a>)</p>
+<p class="lede-line">The news is easy to summarize as &quot;ChatGPT can now read Epic.&quot;</p>
+<p class="lede-counter">The actual development is more specific.</p>
+<p>ChatGPT could already answer medical questions, summarize documents and search clinical literature. What changes is access to patient-specific context. In an approved organizational deployment, a clinician can ask questions about information in the patient&#x27;s Epic record without manually copying that information into ChatGPT.</p>
+<p>This is best understood as a feature release within ChatGPT for Healthcare, but it is an important one. OpenAI is moving from a general AI product adapted for healthcare toward a product connected to the systems where clinical work actually occurs.</p>
+<p>It is also important to establish what the announcement does not say. OpenAI&#x27;s announcement does not state that LSU Health, LCMC Health, Our Lady of the Lake, Ochsner Health or another LSU clinical partner has enabled this integration. Availability depends on each healthcare organization&#x27;s own configuration and approval. (<a class="source-link" href="https://help.openai.com/en/articles/20001490" target="_blank" rel="noopener noreferrer">OpenAI Help Center</a>)</p>
+<p class="opening-setup">For our faculty, two questions therefore need to remain separate:</p>
+<p class="opening-question">&quot;What can this technology do?&quot;</p>
+<p class="opening-and">and</p>
+<p class="opening-question">&quot;What is configured, approved, validated and appropriate where I am practicing?&quot;</p>
+<p>They are different questions.</p>
+
+<nav class="contents" aria-label="Article contents">
+  <div class="contents-kicker">CONTENTS</div>
+  <ol>
+    <li><a href="#what-openai-released">What OpenAI released</a></li>
+    <li><a href="#how-it-works">How the Epic connection works</a></li>
+    <li><a href="#read-only">Why read-only is not clinically passive</a></li>
+    <li><a href="#hipaa-baa">HIPAA, the BAA, and PHI boundaries</a></li>
+    <li><a href="#demonstrated">What has actually been demonstrated</a></li>
+    <li><a href="#where-help">Where this may help</a></li>
+    <li><a href="#other-clinical-ai">How it compares with other clinical AI</a></li>
+    <li><a href="#lsu-health">What this means at LSU Health New Orleans</a></li>
+    <li><a href="#practical-test">A practical clinical workflow test</a></li>
+    <li><a href="#takeaway">What clinicians should take away</a></li>
+  </ol>
+</nav>
+<h2 id="what-openai-released">What exactly did OpenAI release?</h2>
+<p>OpenAI now has several healthcare offerings that are easy to confuse.</p>
+<p>ChatGPT for Healthcare is the enterprise product intended for healthcare organizations. ChatGPT for Clinicians is available to eligible verified U.S. clinicians. Health in ChatGPT is patient-facing.</p>
+<p>The Epic connection is an organizational capability. It is not available simply because an individual physician has ChatGPT for Clinicians and an Epic account. OpenAI says the Epic plugin requires an approved ChatGPT for Healthcare or eligible HIPAA-enabled Enterprise workspace, health-system configuration and the clinician&#x27;s own Epic authentication. (<a class="source-link" href="https://help.openai.com/en/articles/20001490" target="_blank" rel="noopener noreferrer">OpenAI Help Center</a>)</p>
+<p>The organization participates first. The individual clinician then connects through that organization&#x27;s configured environment.</p>
+<h2 id="how-it-works">How does it actually work?</h2>
+<p class="setup-line">At a simplified level, the pathway looks like this:</p>
+<div class="pathway-line" role="note" aria-label="Simplified pathway">Clinician -&gt; Epic authentication -&gt; authorized EHR access -&gt; patient information retrieved -&gt; ChatGPT processes the information -&gt; clinician reviews the result -&gt; clinician decides what to do.</div>
+<p>Several technical standards make this possible. They sound more complicated than the underlying concepts.</p>
+<h3 id="fhir-data-pathway">FHIR: the data pathway</h3>
+<p>FHIR stands for Fast Healthcare Interoperability Resources. It is an HL7 standard for exchanging defined types of healthcare information through APIs.</p>
+<p>An API is a controlled doorway through which one software system can request information from another.</p>
+<p>ChatGPT is therefore not being given unrestricted access to Epic&#x27;s underlying database. OpenAI requires the health system to configure its Epic FHIR R4 endpoint and an authorized application. The available information can include clinical notes, medications, conditions, encounters, laboratory results and other approved resources. (<a class="source-link" href="https://help.openai.com/en/articles/20001490" target="_blank" rel="noopener noreferrer">OpenAI Help Center</a>)</p>
+<p>FHIR organizes information into defined resource types. An Observation might contain a laboratory value or vital sign. MedicationRequest can describe a medication order. DiagnosticReport can contain a diagnostic report. DocumentReference can point to clinical documents. Encounter describes a clinical encounter.</p>
+<p>The clinical translation is simple: FHIR provides a standardized way for an authorized application to ask Epic for specific categories of information.</p>
+<p class="argument-line">FHIR does not determine whether that information is clinically correct.</p>
+<p>If the medication list is wrong, FHIR can transmit the wrong list perfectly. If an outside record is absent, FHIR cannot recover it. If an old diagnosis remains on the problem list, standardized transport does not determine whether that diagnosis is still clinically meaningful.</p>
+<p class="argument-line">FHIR helps solve data access. It does not solve data quality or clinical interpretation.</p>
+<p>The supporting technical analysis for this review similarly identified patient-specific FHIR access as the central change from a general AI product without direct EHR context.</p>
+<h3 id="smart-on-fhir">SMART on FHIR: putting the application into clinical context</h3>
+<p>The architecture also closely aligns with SMART on FHIR, the standard framework widely used to connect applications to FHIR-enabled EHRs.</p>
+<p>SMART combines data access with authorization, user identity and clinical context. For example, an application launched from an EHR can potentially know which patient is currently open while still respecting the user&#x27;s existing permissions. SMART defines scopes for FHIR resources, identity information, patient context and refresh tokens. (<a class="source-link" href="https://www.hl7.org/fhir/smart-app-launch/STU2.2/scopes-and-launch-context.html" target="_blank" rel="noopener noreferrer">HL7</a>)</p>
+<p class="setup-line">In plain language:</p>
+<ul class="plain-language"><li>FHIR defines how clinical information is packaged and requested.</li><li>SMART helps an application connect that information to the authorized user and clinical context.</li></ul>
+<p>OpenAI&#x27;s public documentation explicitly describes FHIR R4, OAuth and scopes. It does not formally label the Epic plugin itself as a SMART on FHIR product. The architecture strongly aligns with SMART, but that distinction should be preserved.</p>
+<h3 id="oauth-scopes">OAuth and scopes: who can access what?</h3>
+<p>OAuth is part of the authorization machinery.</p>
+<p>Think of it as a temporary electronic access badge rather than handing another application your Epic password.</p>
+<p class="definition-line">Authentication asks, &quot;Who are you?&quot;</p>
+<p class="definition-line">Authorization asks, &quot;What are you allowed to access?&quot;</p>
+<p>OpenAI requires an Epic OAuth application, an OAuth client ID and secret, approved scopes and each clinician&#x27;s own Epic sign-in. Connecting ChatGPT does not expand the clinician&#x27;s existing Epic permissions. (<a class="source-link" href="https://help.openai.com/en/articles/20001490" target="_blank" rel="noopener noreferrer">OpenAI Help Center</a>)</p>
+<p class="setup-line">Scopes then define what the application can request.</p>
+<p class="setup-line">OpenAI lists examples including:</p>
+<ul class="scope-list"><li><code>user/Observation.read</code></li><li><code>user/MedicationRequest.read</code></li><li><code>user/DocumentReference.read</code></li><li><code>user/DiagnosticReport.read</code></li><li><code>user/Encounter.read</code></li></ul>
+<p class="argument-line">The operative word is read.</p>
+<p>OpenAI says the current Epic connection cannot update the medical record, place orders, message patients or override existing chart permissions. (<a class="source-link" href="https://help.openai.com/en/articles/20001490" target="_blank" rel="noopener noreferrer">OpenAI Help Center</a>)</p>
+<p>That creates several separate access gates. The clinician needs appropriate Epic access. The application needs approved scopes. The ChatGPT workspace needs to permit the plugin. The organization needs to configure the connection.</p>
+<p>Two hospitals can therefore both use Epic while providing very different AI environments.</p>
+<h3 id="offline-access">What does offline_access mean?</h3>
+<p>OpenAI also lists offline_access among its common OAuth scopes.</p>
+<p>The name sounds more concerning than its technical meaning.</p>
+<p>SMART defines offline_access as permission to obtain a refresh token. Access tokens expire. A refresh token can allow an application to obtain another access token without forcing the clinician through the complete sign-in process again. (<a class="source-link" href="https://www.hl7.org/fhir/smart-app-launch/STU2.2/scopes-and-launch-context.html" target="_blank" rel="noopener noreferrer">HL7</a>)</p>
+<p class="argument-line">It does not create write access.</p>
+<p>It also does not, by itself, mean that ChatGPT is continuously monitoring charts after a clinician leaves.</p>
+<p>It does illustrate why security review cannot stop at &quot;the integration is read-only.&quot; Token lifetime, revocation, authentication, logging and session management still matter.</p>
+<h3 id="asking-about-patient">What happens when I ask ChatGPT about a patient?</h3>
+<p class="setup-line">Suppose a clinician asks:</p>
+<blockquote class="clinical-question">&quot;What has changed since this patient&#x27;s previous visit?&quot;</blockquote>
+<p>ChatGPT can retrieve authorized information from Epic, process it in the context of that question and return a synthesis. OpenAI specifically describes use cases involving recent laboratory findings, medication changes, specialist recommendations, unresolved follow-up issues and clinical timelines. Responses can point back to supporting chart information. (<a class="source-link" href="https://openai.com/index/chatgpt-connects-health-records-and-healthcare-sources/" target="_blank" rel="noopener noreferrer">OpenAI</a>)</p>
+<p>That is more useful than asking a generic chatbot about an abstract clinical case because the AI has access to relevant patient context.</p>
+<p class="argument-line">But retrieval and interpretation remain different functions.</p>
+<p>The system may retrieve the correct facts and still misunderstand their clinical meaning.</p>
+<p>It may produce an accurate timeline while omitting the event that matters most.</p>
+<p>Or the necessary information may never have been accessible through the configured FHIR connection.</p>
+<h3 id="rag">Is this RAG?</h3>
+<p>You may hear this described as retrieval-augmented generation, or RAG.</p>
+<p>Conceptually, that is reasonable. The model is not answering solely from information embedded during training. It retrieves external patient information when responding.</p>
+<p>But &quot;RAG&quot; can also describe a particular engineering architecture involving embeddings, document chunking, vector databases, ranking and context assembly.</p>
+<p>OpenAI has not publicly described enough of the Epic plugin&#x27;s internal retrieval pipeline to establish those implementation details.</p>
+<p class="setup-line">The clinically useful concept is simpler:</p>
+<p>The model can retrieve authorized patient information before answering.</p>
+<p>That can make the answer more relevant.</p>
+<p class="argument-line">It does not make the answer automatically correct.</p>
+<h3 id="connection-model">The connection and the model are separate</h3>
+<p>FHIR, OAuth, scopes and EHR configuration get information to the AI.</p>
+<p>The language model processes that information.</p>
+<p>OpenAI currently describes ChatGPT for Healthcare as using its latest healthcare-optimized models rather than permanently tying the Epic connection to one fixed model. (<a class="source-link" href="https://help.openai.com/en/articles/20001046" target="_blank" rel="noopener noreferrer">OpenAI Help Center</a>)</p>
+<p class="argument-line">That matters for clinical validation.</p>
+<p>A health system could test a workflow using one model configuration and later encounter a changed model. For consequential uses, model changes should be treated as part of ongoing performance monitoring rather than as invisible software updates.</p>
+<h2 id="read-only">Read-only is safer. It is not clinically passive.</h2>
+
+<figure class="figure figure-wide" id="figure-1">
+  <div class="figure-label">FIGURE 1</div>
+  <img src="images/2_read_only_pathway.png" alt="Read-only Epic pathway showing clinician sign-in, authorized Epic record, FHIR read scopes, ChatGPT synthesis, clinician review, and clinician action in Epic." loading="lazy">
+  <figcaption>
+    <strong>Read-only changes where clinical risk sits.</strong>
+    <span>Imagine that ChatGPT summarizes an 80-page patient record accurately except for one prior pathology result that changes today's interpretation.</span>
+    <small>Source: author's reading of OpenAI documentation, September 2026.</small>
+  </figcaption>
+</figure>
+<p>The inability to write to Epic is a meaningful boundary.</p>
+<p>A system that summarizes information creates a different risk from a system that can place medication orders or initiate clinical actions.</p>
+<p>But &quot;read-only&quot; should not be confused with &quot;cannot affect care.&quot;</p>
+<p>Nothing was written to Epic.</p>
+<p>Yet if the clinician relies on the summary, the AI has influenced the clinical decision.</p>
+<blockquote class="pullquote">The risk has moved from execution to cognition.</blockquote>
+<p>This is also why omission may be as important as hallucination.</p>
+<p>A fabricated statement may be noticed. A missing fact is harder because the clinician does not know that something should have been there.</p>
+<p>A handoff can contain no false information and still be unsafe because the wrong thing was omitted. AI-generated chart summaries can fail in the same way.</p>
+<p>Citations help verify what the AI included.</p>
+<p>They do not automatically reveal what it failed to include.</p>
+<h2 id="hipaa-baa">HIPAA and the BAA: the boundary clinicians should understand</h2>
+<p class="setup-line">The Epic connection immediately raises another question:</p>
+<blockquote class="clinical-question">&quot;Can I now put PHI into ChatGPT?&quot;</blockquote>
+<p>The accurate answer is not simply yes or no.</p>
+<p>OpenAI says ChatGPT for Healthcare is designed to support HIPAA-compliant use and makes a Business Associate Agreement, or BAA, available. It also provides enterprise controls such as role-based access, SSO, audit logs, retention controls and options for customer-managed encryption. OpenAI states that content in ChatGPT for Healthcare is not used to train its models. (<a class="source-link" href="https://help.openai.com/en/articles/20001046" target="_blank" rel="noopener noreferrer">OpenAI Help Center</a>)</p>
+<p class="argument-line">But a BAA is not a universal permission slip.</p>
+<p>Under HIPAA, a business associate may create, receive, maintain or transmit PHI while performing services for a covered entity under defined contractual conditions. The BAA specifies permitted uses and disclosures and the safeguards and obligations that apply to that PHI. (<a class="source-link" href="https://www.hhs.gov/hipaa/for-professionals/covered-entities/sample-business-associate-agreement-provisions/index.html" target="_blank" rel="noopener noreferrer">HHS.gov</a>)</p>
+<p class="setup-line">The critical clinical point is this:</p>
+<p class="argument-line">A BAA does not mean that every feature inside a product can automatically be used with PHI.</p>
+<p>OpenAI explicitly says its BAA covers only eligible products and functionality. A feature being visible or available does not establish that a particular use or connected third-party service is covered. OpenAI currently lists improved memory and event-triggered scheduled tasks among functionality that is not covered under the BAA and says PHI should not be used with those functions. (<a class="source-link" href="https://help.openai.com/en/articles/20001069" target="_blank" rel="noopener noreferrer">OpenAI Help Center</a>)</p>
+<p>The Epic documentation is even more explicit. Before using the plugin with PHI, OpenAI tells organizations to confirm an applicable BAA, appropriate Epic authorization, approved workspace configuration and other agreements required for the intended use. An enabled plugin or accepted warning does not automatically make every workflow covered. (<a class="source-link" href="https://help.openai.com/en/articles/20001490" target="_blank" rel="noopener noreferrer">OpenAI Help Center</a>)</p>
+<p class="setup-line">So the useful question is not:</p>
+<p class="policy-question">&quot;Does OpenAI offer a BAA?&quot;</p>
+<p class="setup-line">It is:</p>
+<p class="policy-question">&quot;Is this product, this feature, this data path and this particular workflow covered by our organization&#x27;s agreements and approved for use here?&quot;</p>
+<p class="argument-line">HIPAA compliance and clinical safety are also different things.</p>
+<p>A BAA governs how PHI can be handled.</p>
+<p>It does not certify that an AI-generated clinical summary is accurate.</p>
+<p>A system can meet an organization&#x27;s privacy and security requirements and still produce a clinically wrong answer. Conversely, a model can perform very well in a research evaluation and still be inappropriate for PHI if the clinician is using it through an unapproved service.</p>
+<ul class="separation-list"><li>Privacy asks whether the information may flow through the system.</li><li>Security asks how that information is protected.</li><li>Authorization asks whether this user may access it.</li><li>Clinical validation asks whether the system performs the task reliably.</li><li>Clinical utility asks whether using it actually improves the work or care.</li></ul>
+<p class="argument-line">Each needs its own answer.</p>
+<h3 id="minimum-necessary">What about &quot;minimum necessary&quot;?</h3>
+<p>HIPAA generally requires reasonable efforts to limit uses, disclosures and requests for PHI to what is needed for the intended purpose, although the rule contains exceptions, including disclosures to or requests by healthcare providers for treatment. Covered entities still establish role-based policies governing workforce access, and BAAs constrain business-associate uses and disclosures according to the permitted purpose and applicable policies. (<a class="source-link" href="https://www.hhs.gov/hipaa/for-professionals/privacy/guidance/minimum-necessary-requirement/index.html" target="_blank" rel="noopener noreferrer">HHS.gov</a>)</p>
+<p class="setup-line">There is also a useful AI-design principle here even when the precise HIPAA exception depends on the workflow:</p>
+<p class="argument-line">More patient data is not automatically better.</p>
+<p>A good implementation should ask what information the AI actually needs for the defined task rather than assuming that unrestricted longitudinal access is always preferable.</p>
+<p>More information can expose additional PHI, increase irrelevant context and introduce conflicting or outdated clinical information.</p>
+<h3 id="public-data-boundary">The public-data plugin has a different privacy boundary</h3>
+<p>The Healthcare Public Data plugin is separate from Epic.</p>
+<p>It searches nine public sources covering biomedical research, clinical trials, medications, FDA information, Medicare information, healthcare facilities and provider records. It does not access patient charts. (<a class="source-link" href="https://help.openai.com/en/articles/20001489" target="_blank" rel="noopener noreferrer">OpenAI Help Center</a>)</p>
+<p class="setup-line">This creates two different information pathways:</p>
+<div class="two-path-questions"><ul><li>Epic asks, &quot;What does this patient&#x27;s authorized record contain?&quot;</li><li>Healthcare Public Data asks, &quot;What does an external public source contain?&quot;</li></ul></div>
+<p>Those pathways should not be mentally combined.</p>
+<p>OpenAI specifically tells users not to include PHI, patient names, dates of birth, medical record numbers, member numbers, contact information or other identifying information in searches sent to the public healthcare sources. It also warns that a BAA covering the ChatGPT workspace does not automatically authorize an external service to receive PHI. (<a class="source-link" href="https://help.openai.com/en/articles/20001489" target="_blank" rel="noopener noreferrer">OpenAI Help Center</a>)</p>
+<p class="setup-line">That is an important practical lesson:</p>
+<blockquote class="pullquote">The privacy boundary follows the actual data path, not the ChatGPT logo.</blockquote>
+
+<figure class="figure figure-breakout" id="figure-2">
+  <div class="figure-label">FIGURE 2</div>
+  <img src="images/3_two_phi_paths.png" alt="Two information pathways in the same ChatGPT interface: an Epic path for authorized patient records and a public-data path that must not receive patient identifiers." loading="lazy">
+  <figcaption><strong>Two paths in one interface.</strong> The privacy boundary depends on where the query and data actually travel.</figcaption>
+</figure>
+<h2 id="demonstrated">What has actually been demonstrated?</h2>
+<p>OpenAI reports that physicians evaluated the connected-EHR capability across 27 clinical use cases, including pre-visit review, clinical timelines, medication review and handoff summaries.</p>
+<p>Across 4,363 ratings, 99.1 percent of responses were rated safe. OpenAI separately reports that more than 93 percent of responses received &quot;good&quot; or better accuracy ratings for each of five tested public-data sources. (<a class="source-link" href="https://openai.com/index/chatgpt-connects-health-records-and-healthcare-sources/" target="_blank" rel="noopener noreferrer">OpenAI</a>)</p>
+<p class="argument-line">Those findings are encouraging.</p>
+<p class="argument-line">They are also developer-reported evaluations.</p>
+<p>The 99.1 percent figure does not mean that 0.9 percent of real clinical encounters will result in an AI-related safety event. It is not a diagnostic-error rate, an adverse-event rate or a patient-outcome measure.</p>
+<p>The release does not establish reduced mortality, fewer diagnostic errors, improved medication safety or net clinician time savings.</p>
+<p class="setup-line">There is a sequence of evidence that should remain separate:</p>
+<ol class="evidence-questions"><li>Can the technology perform the task?</li><li>How accurately does it perform it?</li><li>Does that performance hold in real clinical workflow?</li><li>Does using it improve clinician work or patient care?</li><li>Is the benefit worth the implementation burden, cost and new risks?</li></ol>
+<p class="argument-line">Good benchmark performance does not automatically answer the later questions.</p>
+<h2 id="where-help">Where might this actually help?</h2>
+
+<figure class="figure figure-portrait" id="figure-3">
+  <div class="figure-label">FIGURE 3</div>
+  <img src="images/4_evidence_ladder.png" alt="Five-step clinical evidence ladder separating task capability, accuracy, real-workflow performance, improvement in care, and value relative to cost and risk." loading="lazy">
+  <figcaption>
+    <strong>The open rungs are the local evaluation agenda.</strong>
+    <span>Developer-reported task performance and safety ratings do not establish workflow effectiveness, patient outcomes, or net value.</span>
+    <small>Source: author's reading of OpenAI documentation, September 2026.</small>
+  </figcaption>
+</figure>
+<p>The clearest near-term use may be chart synthesis.</p>
+<p class="setup-line">A clinician dealing with several years of notes, admissions, medication changes, laboratory results and consultant documentation might ask:</p>
+<ul class="example-questions"><li>&quot;What changed since I last saw this patient?&quot;</li><li>&quot;What did the latest consultants recommend?&quot;</li><li>&quot;Which medications changed during the last hospitalization?&quot;</li><li>&quot;Are there abnormal findings without obvious documented follow-up?&quot;</li></ul>
+<p>If the AI can reliably compress a large chart into a useful starting point and make source verification easy, that could reduce some of the cognitive work required to reconstruct the patient&#x27;s history.</p>
+<p>Similar approaches could help with pre-visit preparation, clinical timelines, handoffs, research-related chart review, information retrieval, teaching and administrative work.</p>
+<p class="argument-line">The level of clinician oversight should depend on the task.</p>
+<h3 id="human-in-loop">&quot;Human in the loop&quot; is not enough</h3>
+<p>The phrase &quot;human in the loop&quot; says very little about whether the human can actually catch an error.</p>
+<p class="setup-line">A more useful question is:</p>
+<blockquote class="clinical-question">&quot;Could the clinician realistically detect the mistakes this system is likely to make before those mistakes matter?&quot;</blockquote>
+<p>For a low-risk administrative draft, reviewing the finished text may be sufficient.</p>
+<p>For chart synthesis, facts that affect today&#x27;s assessment may need verification against the source record.</p>
+<p>For diagnosis, medication selection, disposition or treatment decisions, independent review should be considerably stronger.</p>
+<p>FDA&#x27;s 2026 guidance on clinical decision-support software follows a related principle. Whether software falls within or outside device regulation depends on the intended function and, for certain non-device CDS, whether the clinician can independently review the basis of the recommendation rather than relying primarily on the software. (<a class="source-link" href="https://www.fda.gov/regulatory-information/search-fda-guidance-documents/clinical-decision-support-software" target="_blank" rel="noopener noreferrer">U.S. Food and Drug Administration</a>)</p>
+<p class="argument-line">Regulatory status cannot be inferred simply because a product uses AI, has citations or connects to an EHR.</p>
+<h2 id="other-clinical-ai">How does this compare with other clinical AI?</h2>
+<p>OpenAI is not the first company to connect AI to Epic workflows.</p>
+<p>OpenEvidence is already available within Epic workflows at Sutter Health, and Cedars-Sinai announced enterprise access in May 2026 that can combine medical literature with relevant information from an individual patient&#x27;s EHR. (<a class="source-link" href="https://www.cedars-sinai.org/newsroom/cedars-sinai-enhances-clinical-decision-making-with-openevidence/" target="_blank" rel="noopener noreferrer">Cedars-Sinai</a>)</p>
+<p>Ambient systems such as Abridge go deeper into a different workflow. Abridge can return generated documentation into Epic and has developed workflows that surface draft medication, laboratory, imaging, referral and other orders for clinician action. (<a class="source-link" href="https://www.abridge.com/blog/orders-real-time-clinical-documentation" target="_blank" rel="noopener noreferrer">Abridge</a>)</p>
+<p>That comparison helps place OpenAI&#x27;s release.</p>
+<p>ChatGPT offers broad AI capability plus standardized access to patient information. Its current Epic connection remains relatively shallow because it is read-only.</p>
+<p>For some use cases, that may be exactly the right safety boundary.</p>
+<p>For others, a narrower product integrated more deeply into the workflow may be more useful.</p>
+<p class="argument-line">The most capable underlying model is not automatically the best clinical product. Workflow matters.</p>
+<h2 id="lsu-health">What this means at LSU Health New Orleans</h2>
+<p>LSU Health faculty practice, teach, supervise trainees and participate in clinical programs across multiple independent healthcare organizations.</p>
+<p>That makes the local implementation question especially important.</p>
+<p>An AI capability may exist at one site and not another.</p>
+<p>The same product could have different permissions in two organizations.</p>
+<p>One partner might eventually enable patient-specific chart synthesis. Another might use a different AI platform. Another might allow AI for certain administrative uses but restrict patient-specific workflows.</p>
+<p class="argument-line">None of those local situations should be assumed unless the organization establishes them.</p>
+
+<div class="lsu-gates-breakout">
+  <div class="lsu-gates-copy">
+    <p>For LSU faculty, several statements therefore need to remain separate:</p>
+    <ol><li>&quot;ChatGPT can technically connect to Epic.&quot;</li><li>&quot;My health system has configured the connection.&quot;</li><li>&quot;My account is authorized to use it.&quot;</li><li>&quot;This particular workflow has been approved and evaluated.&quot;</li><li>&quot;This output is reliable enough for the clinical decision I am making.&quot;</li></ol>
+    <p class="gate-closing">Each requires different evidence.</p>
+  </div>
+  
+<figure class="figure figure-gates" id="figure-4">
+  <div class="figure-label">FIGURE 4</div>
+  <img src="images/1_five_questions.png" alt="Five separate gates for Epic-connected ChatGPT: technical capability, organizational configuration, account authorization, workflow approval, and output reliability." loading="lazy">
+  <figcaption><strong>Every gate needs its own answer.</strong> Technical capability, local configuration, authorization, workflow approval, and decision-level reliability should not be collapsed into one question.</figcaption>
+</figure>
+</div>
+<h2 id="practical-test">A practical test when AI appears in the clinical workflow</h2>
+<p class="setup-line">Rather than asking &quot;Is this AI good?&quot;, clinicians can ask:</p>
+<ol class="practical-list"><li>What problem are we trying to solve?</li><li>What information does the AI actually receive?</li><li>What parts of the record can it access, and what may be absent?</li><li>Is the system read-only, or can any component initiate an action?</li><li>Is this particular use covered by the organization&#x27;s BAA, approved configuration and policies?</li><li>Where does PHI go, including when external data sources or connected services are used?</li><li>What evidence supports this exact clinical task?</li><li>What kinds of errors and omissions occurred during testing?</li><li>Would I realistically recognize those errors?</li><li>Does the tool save time after verification is included?</li><li>What happens when the model or integration changes?</li><li>How will performance be monitored after deployment?</li><li>Is this better than the workflow or technology we already have?</li><li>Does this problem actually require AI?</li></ol>
+<p class="argument-line">The last question should come early, especially in procurement.</p>
+<p class="argument-line">The existence of an AI product should not be allowed to define the problem.</p>
+<h2 id="takeaway">What clinicians should take away</h2>
+<p>The most interesting part of this announcement is not that ChatGPT can answer medical questions.</p>
+<p>It is that a general-purpose AI platform can now retrieve authorized patient context from an EHR through standardized healthcare interfaces and organization-controlled permissions.</p>
+<ul class="takeaway-stack"><li>FHIR provides the data pathway.</li><li>OAuth, scopes and related controls govern access.</li><li>Epic remains the clinical source system.</li><li>The health system decides whether and how the connection is configured.</li><li>The BAA and approved product configuration define part of the PHI boundary.</li><li>ChatGPT provides the synthesis layer.</li><li>The clinician still has to determine whether that synthesis is accurate enough, complete enough and appropriate for the task.</li></ul>
+<p>That could make AI considerably more useful in clinical practice.</p>
+<p>It also changes the questions clinicians and health systems need to ask.</p>
+<ul class="closing-questions"><li>What did the system retrieve?</li><li>What did it miss?</li><li>Where did the PHI go?</li><li>Could the clinician detect an important omission?</li><li>Does verification eliminate the time saved?</li><li>What happens when the model changes?</li><li>And is this exact workflow approved and validated in the clinical environment where the clinician is practicing?</li></ul>
+<p class="setup-line">The useful question is no longer simply, &quot;Can AI do this?&quot;</p>
+<p class="setup-line">It is:</p>
+<blockquote class="final-question">&quot;Can this particular AI, connected to this particular clinical information, under these permissions and agreements, performing this defined task, make clinical work measurably better without creating a larger problem somewhere else?&quot;</blockquote>
+<h2 id="sources">Sources and further reading</h2>
+<ol class="source-list"><li><a href="https://openai.com/index/chatgpt-connects-health-records-and-healthcare-sources/" target="_blank" rel="noopener noreferrer">OpenAI: Healthcare organizations can now connect EHR and additional industry data to ChatGPT</a></li><li><a href="https://help.openai.com/en/articles/20001490" target="_blank" rel="noopener noreferrer">OpenAI Help Center: Using the Epic plugin with ChatGPT and Codex</a></li><li><a href="https://help.openai.com/en/articles/20001046" target="_blank" rel="noopener noreferrer">OpenAI Help Center: ChatGPT for Healthcare</a></li><li><a href="https://help.openai.com/en/articles/20001069" target="_blank" rel="noopener noreferrer">OpenAI Help Center: HIPAA eligible products and functionality</a></li><li><a href="https://help.openai.com/en/articles/20001489" target="_blank" rel="noopener noreferrer">OpenAI Help Center: Using Healthcare Public Data in ChatGPT and Codex</a></li><li><a href="https://www.hhs.gov/hipaa/for-professionals/covered-entities/sample-business-associate-agreement-provisions/index.html" target="_blank" rel="noopener noreferrer">HHS: Business Associate Contracts</a></li><li><a href="https://www.hhs.gov/hipaa/for-professionals/privacy/guidance/minimum-necessary-requirement/index.html" target="_blank" rel="noopener noreferrer">HHS: Minimum Necessary Requirement</a></li><li><a href="https://www.hl7.org/fhir/smart-app-launch/STU2.2/scopes-and-launch-context.html" target="_blank" rel="noopener noreferrer">HL7: SMART App Launch scopes and launch context</a></li><li><a href="https://fhir.epic.com/Home/Index" target="_blank" rel="noopener noreferrer">Epic: Epic on FHIR documentation</a></li><li><a href="https://www.fda.gov/regulatory-information/search-fda-guidance-documents/clinical-decision-support-software" target="_blank" rel="noopener noreferrer">FDA: Clinical Decision Support Software, final guidance, 2026</a></li></ol>
+      <p class="back-top"><a href="#top">Back to top</a></p>
+    </article>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-name">Ram Paragi</div>
+        <p>Health technology, clinical AI, interoperability and decision support</p>
+        <p><a href="https://datadrivenmed.github.io/resources/">DataDrivenMed Resources</a></p>
+        <p class="footer-note">Independent educational analysis for clinical faculty. Local deployment, permissions, privacy requirements, workflow approval and clinical validation remain organization-specific.</p>
+      </div>
+      <div>
+        <p><strong>Resource hub</strong></p>
+        <p><a href="https://datadrivenmed.github.io/resources/">datadrivenmed.github.io/resources/</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (() => {
+      const progress = document.getElementById('progressBar');
+      const canonical = 'https://datadrivenmed.github.io/resources/epic-chatgpt/';
+      const title = 'ChatGPT can now connect to Epic. The connection matters more than the chatbot.';
+      const status = document.getElementById('copyStatus');
+
+      function updateProgress() {
+        const doc = document.documentElement;
+        const max = doc.scrollHeight - doc.clientHeight;
+        const pct = max > 0 ? (doc.scrollTop / max) * 100 : 0;
+        progress.style.width = pct + '%';
+      }
+      addEventListener('scroll', updateProgress, { passive: true });
+      updateProgress();
+
+      function activeUrl() {
+        return location.protocol.startsWith('http') ? location.href.split('#')[0] : canonical;
+      }
+      async function copyLink() {
+        try {
+          await navigator.clipboard.writeText(activeUrl());
+          status.textContent = 'Link copied.';
+          setTimeout(() => status.textContent = '', 2200);
+        } catch (e) {
+          status.textContent = activeUrl();
+        }
+      }
+      document.getElementById('copyTop').addEventListener('click', copyLink);
+      document.getElementById('copyShare').addEventListener('click', copyLink);
+      document.getElementById('printTop').addEventListener('click', () => print());
+      document.getElementById('printShare').addEventListener('click', () => print());
+
+      const u = encodeURIComponent(activeUrl());
+      const t = encodeURIComponent(title);
+      document.getElementById('linkedinShare').href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + u;
+      document.getElementById('emailShare').href = 'mailto:?subject=' + t + '&body=' + encodeURIComponent(title + '
+
+' + activeUrl());
+    })();
+  </script>
+</body>
+</html>

@@ -75,7 +75,19 @@ h3 { font-family:Inter,Arial,sans-serif; font-size:21px; line-height:1.25; font-
 .policy-question { font-weight:700; font-size:20px; }
 .pullquote { width:min(980px, calc(100vw - 48px)); margin:64px 50%; transform:translateX(-50%); padding:38px 0; border-top:4px solid #000; border-bottom:1px solid #000; font-family:"Playfair Display",Georgia,serif; font-size:clamp(36px,6vw,62px); line-height:1.05; letter-spacing:-.025em; }
 .figure { margin:44px 0 56px; font-family:Inter,Arial,sans-serif; }
-.figure img { display:block; width:100%; height:auto; background:#000; }
+.figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  filter: none;
+  opacity: 1;
+  mix-blend-mode: normal;
+}
 .figure-label { font-size:11px; font-weight:800; letter-spacing:.12em; margin:0 0 8px; }
 .figure figcaption { border-top:1px solid #000; padding-top:12px; margin-top:12px; font-size:13px; line-height:1.45; color:#4b4b4b; }
 .figure figcaption strong { color:#000; }

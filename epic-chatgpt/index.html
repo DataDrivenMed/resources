@@ -1,6 +1,14 @@
 <!doctype html>
 <html lang="en">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BCV1SCYG7Y"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-BCV1SCYG7Y');
+</script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ChatGPT can now connect to Epic | Ram Paragi</title>
@@ -18,13 +26,18 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Playfair+Display:wght@400;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+
+  <!-- GOOGLE ANALYTICS 4
+       Paste the complete Google tag (gtag.js) from Google Analytics immediately below this comment.
+       The engagement events in this page will begin sending automatically once gtag.js is present.
+  -->
 </head>
 <body>
   <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
   <header class="masthead">
     <div class="masthead-inner">
-      <a class="brand" href="https://datadrivenmed.github.io/resources/" aria-label="DataDrivenMed resources"></a>
-      <div class="masthead-section">Clinical AI Briefing</div>
+      <a class="brand" href="https://datadrivenmed.github.io/resources/" aria-label="Ram Paragi AI Resources">Ram Paragi / AI Resources</a>
+      <div class="masthead-section">Clinical AI Analysis</div>
       <div class="masthead-actions">
         <button class="icon-btn" type="button" id="printTop">Print</button>
         <button class="icon-btn" type="button" id="copyTop">Copy link</button>
@@ -34,7 +47,7 @@
 
   <main id="top">
     <header class="hero">
-      <div class="eyebrow">CLINICAL AI · EHR INTEROPERABILITY · FACULTY BRIEFING</div>
+      <div class="eyebrow">CLINICAL AI ANALYSIS · EHR INTEROPERABILITY · FACULTY</div>
       <h1>ChatGPT can now connect to Epic. The connection matters more than the chatbot.</h1>
       <div class="deck">What FHIR, OAuth, read-only access, HIPAA and the BAA mean for LSU Health New Orleans clinicians</div>
       <div class="byline">
@@ -50,6 +63,19 @@
       </div>
       <div class="copy-status" id="copyStatus" aria-live="polite"></div>
     </header>
+
+    <section class="clinician-summary" aria-labelledby="for-clinicians-title">
+      <div class="clinician-summary-inner">
+        <h2 id="for-clinicians-title">For clinicians</h2>
+        <ul>
+          <li>Epic connectivity is an organizational capability, not an individual ChatGPT feature.</li>
+          <li>FHIR can standardize access to authorized clinical data; it does not establish that the underlying data are correct or complete.</li>
+          <li>Read-only limits execution, but an AI-generated synthesis can still influence clinical judgment.</li>
+          <li>A BAA does not automatically authorize every product, feature, external service, or PHI pathway.</li>
+          <li>Local configuration, permissions, workflow approval, validation, and ongoing monitoring still matter.</li>
+        </ul>
+      </div>
+    </section>
 
     <article class="article-shell">
       <p>Few days back, OpenAI added a new capability to ChatGPT for Healthcare: approved healthcare organizations can connect their Epic environment so that ChatGPT can retrieve patient information a clinician is already authorized to see. OpenAI also released a separate Healthcare Public Data plugin for sources such as PubMed, ClinicalTrials.gov, DailyMed, RxNorm, openFDA and CMS data. (<a class="source-link" href="https://openai.com/index/chatgpt-connects-health-records-and-healthcare-sources/" target="_blank" rel="noopener noreferrer">OpenAI</a>)</p>
@@ -164,7 +190,7 @@
 <p>But &quot;read-only&quot; should not be confused with &quot;cannot affect care.&quot;</p>
 <p>Nothing was written to Epic.</p>
 <p>Yet if the clinician relies on the summary, the AI has influenced the clinical decision.</p>
-<blockquote class="pullquote">The risk has moved from execution to cognition.</blockquote>
+<blockquote class="pullquote" data-label="Clinical implication">The risk has moved from execution to cognition.</blockquote>
 <p>This is also why omission may be as important as hallucination.</p>
 <p>A fabricated statement may be noticed. A missing fact is harder because the clinician does not know that something should have been there.</p>
 <p>A handoff can contain no false information and still be unsafe because the wrong thing was omitted. AI-generated chart summaries can fail in the same way.</p>
@@ -205,7 +231,7 @@
 <p>Those pathways should not be mentally combined.</p>
 <p>OpenAI specifically tells users not to include PHI, patient names, dates of birth, medical record numbers, member numbers, contact information or other identifying information in searches sent to the public healthcare sources. It also warns that a BAA covering the ChatGPT workspace does not automatically authorize an external service to receive PHI. (<a class="source-link" href="https://help.openai.com/en/articles/20001489" target="_blank" rel="noopener noreferrer">OpenAI Help Center</a>)</p>
 <p class="setup-line">That is an important practical lesson:</p>
-<blockquote class="pullquote">The privacy boundary follows the actual data path, not the ChatGPT logo.</blockquote>
+<blockquote class="pullquote" data-label="Privacy principle">The privacy boundary follows the actual data path, not the ChatGPT logo.</blockquote>
 
 <figure class="figure figure-breakout" id="figure-2">
   <div class="figure-label">FIGURE 2</div>
@@ -302,13 +328,12 @@
   <footer class="footer">
     <div class="footer-inner">
       <div>
-        <div class="footer-name">Ram Paragi</div>
-        <p>Health technology, clinical AI, interoperability and decision support</p>
-        <p><a href="https://datadrivenmed.github.io/resources/">DataDrivenMed Resources</a></p>
-        <p class="footer-note">Independent educational analysis for clinical faculty. Local deployment, permissions, privacy requirements, workflow approval and clinical validation remain organization-specific.</p>
+        <div class="footer-name"><a href="https://datadrivenmed.github.io/resources/">Ram Paragi / AI Resources</a></div>
+        <p>Clinical AI · Health technology · Decision support</p>
+        <p class="footer-note">This analysis is provided for educational and informational purposes and does not represent institutional policy or authorization to use any AI product with protected health information. Local deployment, permissions, privacy requirements, workflow approval and clinical validation remain organization-specific.</p>
       </div>
       <div>
-        <p><strong>Resource hub</strong></p>
+        <p><strong>More AI resources</strong></p>
         <p><a href="https://datadrivenmed.github.io/resources/">datadrivenmed.github.io/resources/</a></p>
       </div>
     </div>
@@ -317,6 +342,9 @@
   <script>
     (() => {
       const progress = document.getElementById('progressBar');
+      const gaEvent = (name, params = {}) => {
+        if (typeof window.gtag === 'function') window.gtag('event', name, params);
+      };
       const canonical = 'https://datadrivenmed.github.io/resources/epic-chatgpt/';
       const title = 'ChatGPT can now connect to Epic. The connection matters more than the chatbot.';
       const status = document.getElementById('copyStatus');
@@ -326,6 +354,13 @@
         const max = doc.scrollHeight - doc.clientHeight;
         const pct = max > 0 ? (doc.scrollTop / max) * 100 : 0;
         progress.style.width = pct + '%';
+        [25,50,75,90].forEach(mark => {
+          const key = 'ga_scroll_' + mark;
+          if (pct >= mark && !sessionStorage.getItem(key)) {
+            sessionStorage.setItem(key, '1');
+            gaEvent('article_scroll', {percent_scrolled: mark, article_slug: 'epic-chatgpt'});
+          }
+        });
       }
       addEventListener('scroll', updateProgress, { passive: true });
       updateProgress();
@@ -350,9 +385,12 @@
       const u = encodeURIComponent(activeUrl());
       const t = encodeURIComponent(title);
       document.getElementById('linkedinShare').href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + u;
-      document.getElementById('emailShare').href = 'mailto:?subject=' + t + '&body=' + encodeURIComponent(title + '
+      document.getElementById('emailShare').href = 'mailto:?subject=' + t + '&body=' + encodeURIComponent(title + '\n\n' + activeUrl());
 
-' + activeUrl());
+      document.querySelectorAll('.contents a').forEach(a => a.addEventListener('click', () => gaEvent('toc_click', {section: a.getAttribute('href')})));
+      document.querySelectorAll('.source-link, .source-list a').forEach(a => a.addEventListener('click', () => gaEvent('source_click', {link_text: a.textContent.trim(), link_url: a.href})));
+      document.querySelectorAll('#linkedinShare,#emailShare,#copyShare,#copyTop').forEach(el => el && el.addEventListener('click', () => gaEvent('article_share', {method: el.id})));
+      document.querySelectorAll('#printShare,#printTop').forEach(el => el && el.addEventListener('click', () => gaEvent('article_print')));
     })();
   </script>
 </body>
